@@ -41,7 +41,8 @@
 									"path": "$['data'][0]['id']"
 								},
 								"sink": {
-									"type": "Int16"
+									"name": "id",
+									"type": "Int32"
 								}
 							},
 							{
@@ -49,6 +50,7 @@
 									"path": "$['data'][0]['employee_name']"
 								},
 								"sink": {
+									"name": "employee_name",
 									"type": "String"
 								}
 							},
@@ -57,6 +59,7 @@
 									"path": "$['data'][0]['employee_salary']"
 								},
 								"sink": {
+									"name": "employee_salary",
 									"type": "Int32"
 								}
 							},
@@ -65,7 +68,8 @@
 									"path": "$['data'][0]['employee_age']"
 								},
 								"sink": {
-									"type": "Int16"
+									"name": "employee_age",
+									"type": "Int32"
 								}
 							}
 						],

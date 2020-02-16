@@ -1,10 +1,14 @@
 {
 	"name": "rest_connection",
 	"properties": {
+		"linkedServiceName": {
+			"referenceName": "publicrestapiconnection1",
+			"type": "LinkedServiceReference"
+		},
 		"annotations": [],
 		"type": "RestResource",
 		"typeProperties": {
-			"relativeUrl": "http://dummy.restapiexample.com/api/v1/employees"
+			"relativeUrl": ""
 		},
 		"schema": []
 	}

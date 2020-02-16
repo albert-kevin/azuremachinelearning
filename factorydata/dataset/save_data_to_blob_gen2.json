@@ -1,5 +1,5 @@
 {
-	"name": "save_date_to_blob_gen2",
+	"name": "save_data_to_blob_gen2",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureDataLakeStorage2",
@@ -13,7 +13,9 @@
 				"fileSystem": "inputdata"
 			},
 			"columnDelimiter": ",",
+			"rowDelimiter": "\n",
 			"escapeChar": "\\",
+			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": []

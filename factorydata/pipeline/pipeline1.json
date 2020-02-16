@@ -24,8 +24,7 @@
 					"sink": {
 						"type": "DelimitedTextSink",
 						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings",
-							"copyBehavior": "MergeFiles"
+							"type": "AzureBlobFSWriteSettings"
 						},
 						"formatSettings": {
 							"type": "DelimitedTextWriteSettings",
@@ -33,7 +32,49 @@
 							"fileExtension": ".txt"
 						}
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['data'][0]['id']"
+								},
+								"sink": {
+									"type": "Int16",
+									"ordinal": 1
+								}
+							},
+							{
+								"source": {
+									"path": "$['data'][0]['employee_name']"
+								},
+								"sink": {
+									"type": "String",
+									"ordinal": 2
+								}
+							},
+							{
+								"source": {
+									"path": "$['data'][0]['employee_salary']"
+								},
+								"sink": {
+									"type": "Int32",
+									"ordinal": 3
+								}
+							},
+							{
+								"source": {
+									"path": "$['data'][0]['employee_age']"
+								},
+								"sink": {
+									"type": "Int16",
+									"ordinal": 4
+								}
+							}
+						],
+						"collectionReference": ""
+					}
 				},
 				"inputs": [
 					{

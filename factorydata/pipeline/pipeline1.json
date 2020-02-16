@@ -38,42 +38,38 @@
 						"mappings": [
 							{
 								"source": {
-									"path": "$['data'][0]['id']"
+									"path": "['id']"
 								},
 								"sink": {
-									"type": "Int16",
-									"ordinal": 1
+									"type": "Int16"
 								}
 							},
 							{
 								"source": {
-									"path": "$['data'][0]['employee_name']"
+									"path": "['employee_name']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 2
+									"type": "String"
 								}
 							},
 							{
 								"source": {
-									"path": "$['data'][0]['employee_salary']"
+									"path": "['employee_salary']"
 								},
 								"sink": {
-									"type": "Int32",
-									"ordinal": 3
+									"type": "Int32"
 								}
 							},
 							{
 								"source": {
-									"path": "$['data'][0]['employee_age']"
+									"path": "['employee_age']"
 								},
 								"sink": {
-									"type": "Int16",
-									"ordinal": 4
+									"type": "Int16"
 								}
 							}
 						],
-						"collectionReference": ""
+						"collectionReference": "$['data']"
 					}
 				},
 				"inputs": [
@@ -84,7 +80,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "save_date_to_blob_gen2",
+						"referenceName": "save_data_to_blob_gen2",
 						"type": "DatasetReference"
 					}
 				]

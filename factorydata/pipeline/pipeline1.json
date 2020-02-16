@@ -38,7 +38,7 @@
 						"mappings": [
 							{
 								"source": {
-									"path": "['id']"
+									"path": "$['data'][0]['id']"
 								},
 								"sink": {
 									"type": "Int16"
@@ -46,7 +46,7 @@
 							},
 							{
 								"source": {
-									"path": "['employee_name']"
+									"path": "$['data'][0]['employee_name']"
 								},
 								"sink": {
 									"type": "String"
@@ -54,7 +54,7 @@
 							},
 							{
 								"source": {
-									"path": "['employee_salary']"
+									"path": "$['data'][0]['employee_salary']"
 								},
 								"sink": {
 									"type": "Int32"
@@ -62,14 +62,14 @@
 							},
 							{
 								"source": {
-									"path": "['employee_age']"
+									"path": "$['data'][0]['employee_age']"
 								},
 								"sink": {
 									"type": "Int16"
 								}
 							}
 						],
-						"collectionReference": "$['data']"
+						"collectionReference": ""
 					}
 				},
 				"inputs": [

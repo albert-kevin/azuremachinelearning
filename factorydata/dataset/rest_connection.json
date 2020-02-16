@@ -1,0 +1,11 @@
+{
+	"name": "rest_connection",
+	"properties": {
+		"annotations": [],
+		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": "http://dummy.restapiexample.com/api/v1/employees"
+		},
+		"schema": []
+	}
+}

@@ -1,0 +1,32 @@
+{
+	"name": "SourceDataset_3bp",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "inputEmp_tq.txt",
+				"folderPath": "Webinar",
+				"container": "azureml-blobstore-900b8fd6-764d-4702-8ca9-2222dbbc39d1"
+			},
+			"columnDelimiter": "\t",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "FirstName"
+			},
+			{
+				"name": "LastName"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

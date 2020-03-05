@@ -1,5 +1,5 @@
 {
-	"name": "textFile",
+	"name": "DB_V2_file",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "dataforbetterhealth_SFTP",

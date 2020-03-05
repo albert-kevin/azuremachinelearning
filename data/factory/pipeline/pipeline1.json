@@ -62,7 +62,7 @@
 						"referenceName": "BlobStorage1",
 						"type": "LinkedServiceReference"
 					},
-					"folderPath": "azureml-blobstore-afa68e41-2bd6-4b02-b65b-0e0ec8319534",
+					"folderPath": "azureml-blobstore-afa68e41-2bd6-4b02-b65b-0e0ec8319534/customScript",
 					"referenceObjects": {
 						"linkedServices": [],
 						"datasets": []

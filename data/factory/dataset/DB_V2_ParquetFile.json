@@ -1,5 +1,5 @@
 {
-	"name": "Parquet1",
+	"name": "DB_V2_ParquetFile",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "BlobStorage1",

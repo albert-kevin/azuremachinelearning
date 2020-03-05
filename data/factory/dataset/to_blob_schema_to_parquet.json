@@ -1,0 +1,20 @@
+{
+	"name": "to_blob_schema_to_parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "docph_parquet",
+				"container": "azureml-blobstore-afa68e41-2bd6-4b02-b65b-0e0ec8319534"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

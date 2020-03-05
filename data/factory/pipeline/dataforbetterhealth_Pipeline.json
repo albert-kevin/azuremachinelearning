@@ -4,48 +4,6 @@
 		"description": "exercise for collecting data\nas was done on a hackathon at Digityser 2019\nsee if we can collect all resources and clean the data faster and more easy and with higher quality for further use with ML tools",
 		"activities": [
 			{
-				"name": "SFTP_to_Blob",
-				"description": "copy data from the FTP server to BlobStorage",
-				"type": "Copy",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"source": {
-						"type": "BinarySource",
-						"storeSettings": {
-							"type": "SftpReadSettings",
-							"recursive": false
-						}
-					},
-					"sink": {
-						"type": "BinarySink",
-						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
-						}
-					},
-					"enableStaging": false
-				},
-				"inputs": [
-					{
-						"referenceName": "binaryFile_DocPH_on_SFTP",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "binaryFile_DocPH_on_blobStore",
-						"type": "DatasetReference"
-					}
-				]
-			},
-			{
 				"name": "SFTP_to_Blob_schema",
 				"description": "copy data from the FTP server to BlobStorage",
 				"type": "Copy",

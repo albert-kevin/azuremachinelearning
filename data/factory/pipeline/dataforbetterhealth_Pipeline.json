@@ -25,7 +25,7 @@
 						}
 					},
 					"sink": {
-						"type": "ParquetSink",
+						"type": "BinarySink",
 						"storeSettings": {
 							"type": "AzureBlobStorageWriteSettings"
 						}
@@ -34,13 +34,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DB_V2_file",
+						"referenceName": "binaryFile_DocPH_on_SFTP",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "DB_V2_ParquetFile",
+						"referenceName": "binaryFile_DocPH_on_blobStore",
 						"type": "DatasetReference"
 					}
 				]

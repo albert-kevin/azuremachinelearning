@@ -90,18 +90,108 @@
 									"type": "Int32"
 								},
 								"sink": {
-									"name": "accountYear",
+									"name": "account_yy_ss",
 									"type": "Int32"
 								}
 							},
 							{
 								"source": {
-									"name": "province",
+									"name": "Province",
 									"type": "String"
 								},
 								"sink": {
 									"name": "province",
 									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Type",
+									"type": "String"
+								},
+								"sink": {
+									"name": "type",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "hosp_serv_id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "hosp_serv_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "reimbt_cat_id",
+									"type": "String"
+								},
+								"sink": {
+									"name": "reimbt_cat_id",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "drug_code",
+									"type": "String"
+								},
+								"sink": {
+									"name": "drug_code",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "realization_date",
+									"type": "String"
+								},
+								"sink": {
+									"name": "realization_date",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "quantity",
+									"type": "String"
+								},
+								"sink": {
+									"name": "quantity",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "amount_reimb",
+									"type": "Single"
+								},
+								"sink": {
+									"name": "amount_reimb",
+									"type": "Single"
+								}
+							},
+							{
+								"source": {
+									"name": "amount_not_reimb",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "amount_not_reimb",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "Year",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "year",
+									"type": "Int32"
 								}
 							}
 						]

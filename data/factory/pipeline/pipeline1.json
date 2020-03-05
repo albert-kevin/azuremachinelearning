@@ -55,14 +55,9 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [
-					{
-						"name": "hello",
-						"value": "@activity('<MyCustomActivity>').output.customOutpu"
-					}
-				],
+				"userProperties": [],
 				"typeProperties": {
-					"command": "test_python.py",
+					"command": "python test_python.py",
 					"resourceLinkedService": {
 						"referenceName": "BlobStorage1",
 						"type": "LinkedServiceReference"

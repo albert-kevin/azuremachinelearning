@@ -1,0 +1,28 @@
+{
+	"name": "DelimitedText_from_SFTP",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "dataforbetterhealth_SFTP",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "SftpLocation",
+				"fileName": "DB_V2.TXT",
+				"folderPath": "/upload"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "account_yy_ss\tProvince\tType\thosp_serv_id\treimbt_cat_id\tdrug_code\trealization_date\tquantity\tamount_reimb\tamount_not_reimb\tYear",
+				"type": "String"
+			}
+		]
+	}
+}

@@ -10,6 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "pharma_ref.xlsx",
 				"container": "azureml-blobstore-afa68e41-2bd6-4b02-b65b-0e0ec8319534"
 			}
 		}

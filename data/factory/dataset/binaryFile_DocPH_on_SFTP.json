@@ -1,5 +1,5 @@
 {
-	"name": "DB_V2_file",
+	"name": "binaryFile_DocPH_on_SFTP",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "dataforbetterhealth_SFTP",

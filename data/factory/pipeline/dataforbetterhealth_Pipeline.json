@@ -177,11 +177,11 @@
 							{
 								"source": {
 									"name": "amount_not_reimb",
-									"type": "Int32"
+									"type": "Single"
 								},
 								"sink": {
 									"name": "amount_not_reimb",
-									"type": "Int32"
+									"type": "Single"
 								}
 							},
 							{

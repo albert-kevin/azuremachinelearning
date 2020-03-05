@@ -38,10 +38,119 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Binary2",
+						"referenceName": "Binary_to_blob_pharmarefXLSX",
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "copy_googleExcell_to_Blob",
+				"description": "",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "Binary1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Binary_to_blob_pharmarefXLSX",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "copy_googleExcell_to_Blob_copy1",
+				"description": "step 3\ntrying to get a schema setup, storing into CSV or parquet",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "Binary1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Binary_to_blob_pharmarefXLSX",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "Custom1",
+				"type": "Custom",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"command": "test_python.py",
+					"resourceLinkedService": {
+						"referenceName": "BlobStorage1",
+						"type": "LinkedServiceReference"
+					},
+					"folderPath": "azureml-blobstore-afa68e41-2bd6-4b02-b65b-0e0ec8319534",
+					"referenceObjects": {
+						"linkedServices": [],
+						"datasets": []
+					}
+				}
 			}
 		],
 		"annotations": []

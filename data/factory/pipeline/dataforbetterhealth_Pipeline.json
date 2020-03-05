@@ -80,7 +80,32 @@
 							"fileExtension": ".txt"
 						}
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "account_yy_ss",
+									"type": "Int32"
+								},
+								"sink": {
+									"name": "accountYear",
+									"type": "Int32"
+								}
+							},
+							{
+								"source": {
+									"name": "province",
+									"type": "String"
+								},
+								"sink": {
+									"name": "province",
+									"type": "String"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{

@@ -21,7 +21,47 @@
 		},
 		"schema": [
 			{
-				"name": "account_yy_ss\tProvince\tType\thosp_serv_id\treimbt_cat_id\tdrug_code\trealization_date\tquantity\tamount_reimb\tamount_not_reimb\tYear",
+				"name": "account_yy_ss",
+				"type": "String"
+			},
+			{
+				"name": "Province",
+				"type": "String"
+			},
+			{
+				"name": "Type",
+				"type": "String"
+			},
+			{
+				"name": "hosp_serv_id",
+				"type": "String"
+			},
+			{
+				"name": "reimbt_cat_id",
+				"type": "String"
+			},
+			{
+				"name": "drug_code",
+				"type": "String"
+			},
+			{
+				"name": "realization_date",
+				"type": "String"
+			},
+			{
+				"name": "quantity",
+				"type": "String"
+			},
+			{
+				"name": "amount_reimb",
+				"type": "String"
+			},
+			{
+				"name": "amount_not_reimb",
+				"type": "String"
+			},
+			{
+				"name": "Year",
 				"type": "String"
 			}
 		]

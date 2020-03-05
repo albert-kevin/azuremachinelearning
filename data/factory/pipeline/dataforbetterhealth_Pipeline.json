@@ -63,7 +63,7 @@
 						"type": "DelimitedTextSource",
 						"storeSettings": {
 							"type": "SftpReadSettings",
-							"recursive": true
+							"recursive": false
 						},
 						"formatSettings": {
 							"type": "DelimitedTextReadSettings"

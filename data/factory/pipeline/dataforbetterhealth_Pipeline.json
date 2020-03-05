@@ -4,7 +4,7 @@
 		"description": "exercise for collecting data\nas was done on a hackathon at Digityser 2019\nsee if we can collect all resources and clean the data faster and more easy and with higher quality for further use with ML tools",
 		"activities": [
 			{
-				"name": "SFTPdata_to_Blobstorage",
+				"name": "SFTP_to_Blob",
 				"description": "copy data from the FTP server to BlobStorage",
 				"type": "Copy",
 				"dependsOn": [],

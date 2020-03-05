@@ -1,5 +1,5 @@
 {
-	"name": "Binary2",
+	"name": "Binary_to_blob_pharmarefXLSX",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "BlobStorage1",

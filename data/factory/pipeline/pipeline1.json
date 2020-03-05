@@ -55,7 +55,12 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [],
+				"userProperties": [
+					{
+						"name": "hello",
+						"value": "@activity('<MyCustomActivity>').output.customOutpu"
+					}
+				],
 				"typeProperties": {
 					"command": "test_python.py",
 					"resourceLinkedService": {
@@ -64,12 +69,7 @@
 					},
 					"folderPath": "azureml-blobstore-afa68e41-2bd6-4b02-b65b-0e0ec8319534",
 					"referenceObjects": {
-						"linkedServices": [
-							{
-								"referenceName": "BlobStorage1",
-								"type": "LinkedServiceReference"
-							}
-						],
+						"linkedServices": [],
 						"datasets": []
 					}
 				},

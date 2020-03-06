@@ -46,7 +46,44 @@
 				]
 			},
 			{
-				"name": "2_plus_3_python_script",
+				"name": "testing",
+				"description": "what commands are possible",
+				"type": "Custom",
+				"dependsOn": [
+					{
+						"activity": "copy_googleExcell_to_Blob",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"command": "pwd",
+					"resourceLinkedService": {
+						"referenceName": "BlobStorage1",
+						"type": "LinkedServiceReference"
+					},
+					"folderPath": "azureml-blobstore-afa68e41-2bd6-4b02-b65b-0e0ec8319534/customScript",
+					"referenceObjects": {
+						"linkedServices": [],
+						"datasets": []
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureBatch1",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "2_plus_3_python_script_copy1",
 				"description": "this is to test how it works",
 				"type": "Custom",
 				"dependsOn": [

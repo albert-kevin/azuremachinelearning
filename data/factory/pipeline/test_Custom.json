@@ -15,7 +15,16 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [],
+				"userProperties": [
+					{
+						"name": "Username",
+						"value": "ubuntu"
+					},
+					{
+						"name": "Password",
+						"value": "ABCD1234abcd"
+					}
+				],
 				"typeProperties": {
 					"command": "/bin/sh -c \"apt install -y python3-pip && pip3 install pandas && pip3 install xlrd && python3 test_python.py\"",
 					"resourceLinkedService": {

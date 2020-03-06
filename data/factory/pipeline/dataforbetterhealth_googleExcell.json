@@ -59,7 +59,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"command": "python test_python.py\n@activity('MyCustomActivity').output.outputs[0]",
+					"command": "python test_python.py\n@activity('MyCustomActivity').output.outputs[1]",
 					"resourceLinkedService": {
 						"referenceName": "BlobStorage1",
 						"type": "LinkedServiceReference"

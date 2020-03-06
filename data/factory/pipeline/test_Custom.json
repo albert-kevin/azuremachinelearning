@@ -17,7 +17,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"command": "pwd && ls -al",
+					"command": "cmd /c \"set AZ_BATCH & timeout /t 90 > NUL\"",
 					"resourceLinkedService": {
 						"referenceName": "BlobStorage1",
 						"type": "LinkedServiceReference"

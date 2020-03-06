@@ -49,7 +49,14 @@
 				"name": "2_plus_3_python_script",
 				"description": "this is to test how it works",
 				"type": "Custom",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "copy_googleExcell_to_Blob",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -59,7 +66,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"command": "python test_python.py\n@activity('MyCustomActivity').output.outputs[1]",
+					"command": "python test_python.py",
 					"resourceLinkedService": {
 						"referenceName": "BlobStorage1",
 						"type": "LinkedServiceReference"

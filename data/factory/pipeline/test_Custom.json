@@ -15,16 +15,7 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [
-					{
-						"name": "user",
-						"value": "ubuntu456"
-					},
-					{
-						"name": "password",
-						"value": "ABCD1234abcd456"
-					}
-				],
+				"userProperties": [],
 				"typeProperties": {
 					"command": "/bin/sh -c \"pwd\"",
 					"resourceLinkedService": {

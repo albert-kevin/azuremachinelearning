@@ -26,7 +26,7 @@
 					}
 				],
 				"typeProperties": {
-					"command": "/bin/sh -c \"apt install -y python3-pip && pip3 install pandas && pip3 install xlrd && python3 test_python.py\"",
+					"command": "/bin/sh -c \"python3 test_python.py\"",
 					"resourceLinkedService": {
 						"referenceName": "BlobStorage1",
 						"type": "LinkedServiceReference"

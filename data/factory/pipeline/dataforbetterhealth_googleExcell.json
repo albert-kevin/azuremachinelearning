@@ -46,7 +46,8 @@
 				]
 			},
 			{
-				"name": "Custom1",
+				"name": "2_plus_3_python_script",
+				"description": "this is to test how it works",
 				"type": "Custom",
 				"dependsOn": [],
 				"policy": {

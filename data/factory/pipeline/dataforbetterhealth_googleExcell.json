@@ -1,6 +1,7 @@
 {
-	"name": "pipeline1",
+	"name": "dataforbetterhealth_googleExcell",
 	"properties": {
+		"description": "here we try to copy a google excell and transform it into a clean parquet file\nusing custom batch script we transform the data ",
 		"activities": [
 			{
 				"name": "copy_googleExcell_to_Blob",

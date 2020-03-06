@@ -66,7 +66,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"command": "conda activate azureml_py36_automl\npython test_python.py",
+					"command": "/bin/bash -c \"conda activate azureml_py36_automl && python test_python.py\"",
 					"resourceLinkedService": {
 						"referenceName": "BlobStorage1",
 						"type": "LinkedServiceReference"

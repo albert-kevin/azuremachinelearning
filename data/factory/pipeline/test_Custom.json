@@ -15,9 +15,8 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [],
 				"typeProperties": {
-					"command": "/bin/sh -c \"apt-get install python3-pip\"",
+					"command": "/bin/sh -c \"python -V && python3 -V && ls -al && pwd && pip\"",
 					"resourceLinkedService": {
 						"referenceName": "BlobStorage1",
 						"type": "LinkedServiceReference"

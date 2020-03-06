@@ -15,18 +15,9 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [
-					{
-						"name": "user",
-						"value": "ubuntu"
-					},
-					{
-						"name": "password",
-						"value": "ABCD1234abcd"
-					}
-				],
+				"userProperties": [],
 				"typeProperties": {
-					"command": "/bin/sh -c \"python -V && python3 -V && ls -al && pwd && pip\"",
+					"command": "/bin/sh -c \"python -V && python3 -V && ls -al && pwd\"",
 					"resourceLinkedService": {
 						"referenceName": "BlobStorage1",
 						"type": "LinkedServiceReference"

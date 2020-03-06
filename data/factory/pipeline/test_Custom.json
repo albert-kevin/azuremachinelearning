@@ -17,7 +17,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"command": "/bin/sh -c ls -al",
+					"command": "/bin/sh -c \"ls -al && pwd\"",
 					"resourceLinkedService": {
 						"referenceName": "BlobStorage1",
 						"type": "LinkedServiceReference"

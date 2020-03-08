@@ -1,0 +1,7 @@
+{
+	"name": "FunctionAppPipeline1",
+	"properties": {
+		"description": "trying to use a data prep step\nreading xml file from blob\ntrigger with ADF the AppFunction\nthis loads a docker container with specific python code pandas to read xml and output csv file\nthen put the csv result file in the right blob",
+		"annotations": []
+	}
+}

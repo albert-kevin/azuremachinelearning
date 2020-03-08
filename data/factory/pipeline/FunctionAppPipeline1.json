@@ -19,7 +19,9 @@
 				"typeProperties": {
 					"functionName": "HttpTrigger1",
 					"method": "POST",
-					"body": "@json({\"name\":\"Kevin\"})"
+					"body": {
+						"name": "Kevin"
+					}
 				},
 				"linkedServiceName": {
 					"referenceName": "AzureFunction1",

@@ -17,9 +17,9 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"functionName": "kevin08032020",
-					"method": "POST",
-					"body": "name=KevinAlbert"
+					"functionName": "HttpTrigger1",
+					"method": "GET",
+					"body": "KevinAlbert"
 				},
 				"linkedServiceName": {
 					"referenceName": "AzureFunction1",

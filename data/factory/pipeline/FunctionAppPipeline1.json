@@ -19,7 +19,7 @@
 				"typeProperties": {
 					"functionName": "HttpTrigger1",
 					"method": "POST",
-					"body": "@json(concat('{\"name\":\"Kevin}'))"
+					"body": "@json({\"name\":\"Kevin\"})"
 				},
 				"linkedServiceName": {
 					"referenceName": "AzureFunction1",

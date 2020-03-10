@@ -1,5 +1,5 @@
 {
-	"name": "copy_file_functionApp_test1",
+	"name": "dataforbetterhealth_functionApp_test1",
 	"properties": {
 		"description": "here we try to copy a google excell and transform it into a clean parquet file\nusing custom function App we transform the data ",
 		"activities": [

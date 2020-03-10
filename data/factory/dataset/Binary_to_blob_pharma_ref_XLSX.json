@@ -1,5 +1,5 @@
 {
-	"name": "Binary_to_blob_pharmarefXLSX",
+	"name": "Binary_to_blob_pharma_ref_XLSX",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "BlobStorage1",
@@ -11,8 +11,7 @@
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": "pharma_ref.xlsx",
-				"folderPath": "customScript",
-				"container": "azureml-blobstore-afa68e41-2bd6-4b02-b65b-0e0ec8319534"
+				"container": "weather-data"
 			}
 		}
 	}

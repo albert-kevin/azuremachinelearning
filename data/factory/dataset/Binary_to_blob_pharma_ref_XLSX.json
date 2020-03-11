@@ -11,7 +11,7 @@
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": "pharma_ref.xlsx",
-				"container": "weather-data"
+				"container": "azureml-blobstore-340d388f-a522-44b6-b682-e6ab784aa812"
 			}
 		}
 	}

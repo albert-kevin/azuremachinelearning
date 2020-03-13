@@ -1,0 +1,38 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "myADF02032020"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/dataforbetterhealth_SFTP')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "source dataset from RIZIV via SFTP from there Amazon server",
+				"annotations": [],
+				"type": "Sftp",
+				"typeProperties": {
+					"host": "94.143.190.243",
+					"port": "2222",
+					"skipHostKeyValidation": true,
+					"authenticationType": "Basic",
+					"userName": "hackathon",
+					"password": {
+						"type": "SecureString",
+						"value": "**********"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

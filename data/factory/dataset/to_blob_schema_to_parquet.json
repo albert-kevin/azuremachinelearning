@@ -11,7 +11,7 @@
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": "docph.parquet",
-				"container": "azureml-blobstore-afa68e41-2bd6-4b02-b65b-0e0ec8319534"
+				"container": "azureml-blobstore-340d388f-a522-44b6-b682-e6ab784aa812"
 			},
 			"compressionCodec": "snappy"
 		},

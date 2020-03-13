@@ -1,0 +1,39 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "myADF02032020"
+		},
+		"AzureBatch1_accessKey": {
+			"value": ""
+		},
+		"AzureFunction1_functionKey": {
+			"value": ""
+		},
+		"BlobStorage1_connectionString": {
+			"value": ""
+		},
+		"dataforbetterhealth_SFTP_password": {
+			"value": ""
+		},
+		"AzureBatch1_properties_typeProperties_accountName": {
+			"value": "azurebatchsv532020"
+		},
+		"AzureBatch1_properties_typeProperties_batchUri": {
+			"value": "https://azurebatchsv532020.westeurope.batch.azure.com"
+		},
+		"AzureBatch1_properties_typeProperties_poolName": {
+			"value": "kevinPool18"
+		},
+		"HttpServer1_properties_typeProperties_url": {
+			"value": "https://docs.google.com/uc?export=download&id=1RU1LCr3HlAW9VQz2DUDXTf4n96gHaQZ3"
+		},
+		"dataforbetterhealth_SFTP_properties_typeProperties_host": {
+			"value": "94.143.190.243"
+		},
+		"dataforbetterhealth_SFTP_properties_typeProperties_userName": {
+			"value": "hackathon"
+		}
+	}
+}

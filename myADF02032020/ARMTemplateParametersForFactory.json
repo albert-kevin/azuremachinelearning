@@ -17,6 +17,9 @@
 		"dataforbetterhealth_SFTP_password": {
 			"value": ""
 		},
+		"AzureDatabricks1_accessToken": {
+			"value": ""
+		},
 		"AzureBatch1_properties_typeProperties_accountName": {
 			"value": "azurebatchsv532020"
 		},

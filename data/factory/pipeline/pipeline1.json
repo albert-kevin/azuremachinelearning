@@ -3,35 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Notebook1",
-				"type": "DatabricksNotebook",
-				"dependsOn": [
-					{
-						"activity": "copy_googleExcell_to_Blob",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"notebookPath": "/Users/beire_@hotmail.com/bronze.ipynb"
-				},
-				"linkedServiceName": {
-					"referenceName": "AzureDatabricks1",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "copy_googleExcell_to_Blob",
-				"description": "",
+				"name": "Copy data1",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -44,29 +16,542 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "BinarySource",
+						"type": "DelimitedTextSource",
 						"storeSettings": {
-							"type": "HttpReadSettings",
-							"requestMethod": "GET"
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
 						}
 					},
 					"sink": {
-						"type": "BinarySink",
+						"type": "DelimitedTextSink",
 						"storeSettings": {
 							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".csv"
 						}
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "gbifID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "gbifID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "datasetKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "datasetKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "occurrenceID",
+									"type": "String"
+								},
+								"sink": {
+									"name": "occurrenceID",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "kingdom",
+									"type": "String"
+								},
+								"sink": {
+									"name": "kingdom",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "phylum",
+									"type": "String"
+								},
+								"sink": {
+									"name": "phylum",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "class",
+									"type": "String"
+								},
+								"sink": {
+									"name": "class",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "order",
+									"type": "String"
+								},
+								"sink": {
+									"name": "order",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "family",
+									"type": "String"
+								},
+								"sink": {
+									"name": "family",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "genus",
+									"type": "String"
+								},
+								"sink": {
+									"name": "genus",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "species",
+									"type": "String"
+								},
+								"sink": {
+									"name": "species",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "infraspecificEpithet",
+									"type": "String"
+								},
+								"sink": {
+									"name": "infraspecificEpithet",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "taxonRank",
+									"type": "String"
+								},
+								"sink": {
+									"name": "taxonRank",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "scientificName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "scientificName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "verbatimScientificName",
+									"type": "String"
+								},
+								"sink": {
+									"name": "verbatimScientificName",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "verbatimScientificNameAuthorship",
+									"type": "String"
+								},
+								"sink": {
+									"name": "verbatimScientificNameAuthorship",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "countryCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "countryCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "locality",
+									"type": "String"
+								},
+								"sink": {
+									"name": "locality",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "stateProvince",
+									"type": "String"
+								},
+								"sink": {
+									"name": "stateProvince",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "occurrenceStatus",
+									"type": "String"
+								},
+								"sink": {
+									"name": "occurrenceStatus",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "individualCount",
+									"type": "String"
+								},
+								"sink": {
+									"name": "individualCount",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "publishingOrgKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "publishingOrgKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "decimalLatitude",
+									"type": "String"
+								},
+								"sink": {
+									"name": "decimalLatitude",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "decimalLongitude",
+									"type": "String"
+								},
+								"sink": {
+									"name": "decimalLongitude",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "coordinateUncertaintyInMeters",
+									"type": "String"
+								},
+								"sink": {
+									"name": "coordinateUncertaintyInMeters",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "coordinatePrecision",
+									"type": "String"
+								},
+								"sink": {
+									"name": "coordinatePrecision",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "elevation",
+									"type": "String"
+								},
+								"sink": {
+									"name": "elevation",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "elevationAccuracy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "elevationAccuracy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "depth",
+									"type": "String"
+								},
+								"sink": {
+									"name": "depth",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "depthAccuracy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "depthAccuracy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "eventDate",
+									"type": "String"
+								},
+								"sink": {
+									"name": "eventDate",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "day",
+									"type": "String"
+								},
+								"sink": {
+									"name": "day",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "month",
+									"type": "String"
+								},
+								"sink": {
+									"name": "month",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "year",
+									"type": "String"
+								},
+								"sink": {
+									"name": "year",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "taxonKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "taxonKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "speciesKey",
+									"type": "String"
+								},
+								"sink": {
+									"name": "speciesKey",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "basisOfRecord",
+									"type": "String"
+								},
+								"sink": {
+									"name": "basisOfRecord",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "institutionCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "institutionCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "collectionCode",
+									"type": "String"
+								},
+								"sink": {
+									"name": "collectionCode",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "catalogNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "catalogNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "recordNumber",
+									"type": "String"
+								},
+								"sink": {
+									"name": "recordNumber",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "identifiedBy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "identifiedBy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "dateIdentified",
+									"type": "String"
+								},
+								"sink": {
+									"name": "dateIdentified",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "license",
+									"type": "String"
+								},
+								"sink": {
+									"name": "license",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "rightsHolder",
+									"type": "String"
+								},
+								"sink": {
+									"name": "rightsHolder",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "recordedBy",
+									"type": "String"
+								},
+								"sink": {
+									"name": "recordedBy",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "typeStatus",
+									"type": "String"
+								},
+								"sink": {
+									"name": "typeStatus",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "establishmentMeans",
+									"type": "String"
+								},
+								"sink": {
+									"name": "establishmentMeans",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "lastInterpreted",
+									"type": "String"
+								},
+								"sink": {
+									"name": "lastInterpreted",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "mediaType",
+									"type": "String"
+								},
+								"sink": {
+									"name": "mediaType",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "issue",
+									"type": "String"
+								},
+								"sink": {
+									"name": "issue",
+									"type": "String"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{
-						"referenceName": "Binary1",
+						"referenceName": "DelimitedText3",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "Binary_to_blob_pharma_ref_XLSX",
+						"referenceName": "DelimitedText4",
 						"type": "DatasetReference"
 					}
 				]

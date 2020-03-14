@@ -6,13 +6,8 @@
 		"type": "AzureDatabricks",
 		"typeProperties": {
 			"domain": "https://westeurope.azuredatabricks.net",
-			"newClusterNodeType": "Standard_DS3_v2",
-			"newClusterNumOfWorker": "2:8",
-			"newClusterSparkEnvVars": {
-				"PYSPARK_PYTHON": "/databricks/python3/bin/python3"
-			},
-			"newClusterVersion": "6.4.x-scala2.11",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIk1ZQURGMDIwMzIwMjBfZmY5NWUwMWUtMWVhNC00YzkyLWE5MWYtZmViZTU0YTg1YWM2Ig0KfQ=="
+			"existingClusterId": "0314-090449-mat76",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIk1ZQURGMTQwMzIwMjBfZmZmZTEyMDAtNGRmYy00YWRlLWFiZjEtZWFjMWJhYzNlYjExIg0KfQ=="
 		}
 	}
 }

@@ -12,12 +12,213 @@
 				"type": "HttpServerLocation"
 			},
 			"columnDelimiter": "\t",
-			"compressionCodec": "bzip2",
+			"compressionCodec": "ZipDeflate",
 			"compressionLevel": "Fastest",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": []
+		"schema": [
+			{
+				"name": "gbifID",
+				"type": "String"
+			},
+			{
+				"name": "datasetKey",
+				"type": "String"
+			},
+			{
+				"name": "occurrenceID",
+				"type": "String"
+			},
+			{
+				"name": "kingdom",
+				"type": "String"
+			},
+			{
+				"name": "phylum",
+				"type": "String"
+			},
+			{
+				"name": "class",
+				"type": "String"
+			},
+			{
+				"name": "order",
+				"type": "String"
+			},
+			{
+				"name": "family",
+				"type": "String"
+			},
+			{
+				"name": "genus",
+				"type": "String"
+			},
+			{
+				"name": "species",
+				"type": "String"
+			},
+			{
+				"name": "infraspecificEpithet",
+				"type": "String"
+			},
+			{
+				"name": "taxonRank",
+				"type": "String"
+			},
+			{
+				"name": "scientificName",
+				"type": "String"
+			},
+			{
+				"name": "verbatimScientificName",
+				"type": "String"
+			},
+			{
+				"name": "verbatimScientificNameAuthorship",
+				"type": "String"
+			},
+			{
+				"name": "countryCode",
+				"type": "String"
+			},
+			{
+				"name": "locality",
+				"type": "String"
+			},
+			{
+				"name": "stateProvince",
+				"type": "String"
+			},
+			{
+				"name": "occurrenceStatus",
+				"type": "String"
+			},
+			{
+				"name": "individualCount",
+				"type": "String"
+			},
+			{
+				"name": "publishingOrgKey",
+				"type": "String"
+			},
+			{
+				"name": "decimalLatitude",
+				"type": "String"
+			},
+			{
+				"name": "decimalLongitude",
+				"type": "String"
+			},
+			{
+				"name": "coordinateUncertaintyInMeters",
+				"type": "String"
+			},
+			{
+				"name": "coordinatePrecision",
+				"type": "String"
+			},
+			{
+				"name": "elevation",
+				"type": "String"
+			},
+			{
+				"name": "elevationAccuracy",
+				"type": "String"
+			},
+			{
+				"name": "depth",
+				"type": "String"
+			},
+			{
+				"name": "depthAccuracy",
+				"type": "String"
+			},
+			{
+				"name": "eventDate",
+				"type": "String"
+			},
+			{
+				"name": "day",
+				"type": "String"
+			},
+			{
+				"name": "month",
+				"type": "String"
+			},
+			{
+				"name": "year",
+				"type": "String"
+			},
+			{
+				"name": "taxonKey",
+				"type": "String"
+			},
+			{
+				"name": "speciesKey",
+				"type": "String"
+			},
+			{
+				"name": "basisOfRecord",
+				"type": "String"
+			},
+			{
+				"name": "institutionCode",
+				"type": "String"
+			},
+			{
+				"name": "collectionCode",
+				"type": "String"
+			},
+			{
+				"name": "catalogNumber",
+				"type": "String"
+			},
+			{
+				"name": "recordNumber",
+				"type": "String"
+			},
+			{
+				"name": "identifiedBy",
+				"type": "String"
+			},
+			{
+				"name": "dateIdentified",
+				"type": "String"
+			},
+			{
+				"name": "license",
+				"type": "String"
+			},
+			{
+				"name": "rightsHolder",
+				"type": "String"
+			},
+			{
+				"name": "recordedBy",
+				"type": "String"
+			},
+			{
+				"name": "typeStatus",
+				"type": "String"
+			},
+			{
+				"name": "establishmentMeans",
+				"type": "String"
+			},
+			{
+				"name": "lastInterpreted",
+				"type": "String"
+			},
+			{
+				"name": "mediaType",
+				"type": "String"
+			},
+			{
+				"name": "issue",
+				"type": "String"
+			}
+		]
 	}
 }

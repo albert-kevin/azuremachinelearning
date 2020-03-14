@@ -22,7 +22,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Users/beire_@hotmail.com/notebook1.ipynb"
+					"notebookPath": "/Users/beire_@hotmail.com/bronze.ipynb"
 				},
 				"linkedServiceName": {
 					"referenceName": "AzureDatabricks1",

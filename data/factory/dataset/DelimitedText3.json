@@ -23,11 +23,203 @@
 		},
 		"schema": [
 			{
-				"name": "PK\u0003\u0004\u0014\u0000\b\b\b\u0000z�nP\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u001b\u0000\u0000\u00000020555-200221144449610.csv�R�n�0\f<3�&\u0005��\u0013I�\u0001�D�D$�\u0010)���R�d��^\u0004q�!�C-\u0013ϧ{�h�d\u000fԡ��j%\t��\u0007�\u0012K�m�e\b\tU��H\u0015f̜:",
+				"name": "gbifID",
 				"type": "String"
 			},
 			{
-				"name": "$MA7",
+				"name": "datasetKey",
+				"type": "String"
+			},
+			{
+				"name": "occurrenceID",
+				"type": "String"
+			},
+			{
+				"name": "kingdom",
+				"type": "String"
+			},
+			{
+				"name": "phylum",
+				"type": "String"
+			},
+			{
+				"name": "class",
+				"type": "String"
+			},
+			{
+				"name": "order",
+				"type": "String"
+			},
+			{
+				"name": "family",
+				"type": "String"
+			},
+			{
+				"name": "genus",
+				"type": "String"
+			},
+			{
+				"name": "species",
+				"type": "String"
+			},
+			{
+				"name": "infraspecificEpithet",
+				"type": "String"
+			},
+			{
+				"name": "taxonRank",
+				"type": "String"
+			},
+			{
+				"name": "scientificName",
+				"type": "String"
+			},
+			{
+				"name": "verbatimScientificName",
+				"type": "String"
+			},
+			{
+				"name": "verbatimScientificNameAuthorship",
+				"type": "String"
+			},
+			{
+				"name": "countryCode",
+				"type": "String"
+			},
+			{
+				"name": "locality",
+				"type": "String"
+			},
+			{
+				"name": "stateProvince",
+				"type": "String"
+			},
+			{
+				"name": "occurrenceStatus",
+				"type": "String"
+			},
+			{
+				"name": "individualCount",
+				"type": "String"
+			},
+			{
+				"name": "publishingOrgKey",
+				"type": "String"
+			},
+			{
+				"name": "decimalLatitude",
+				"type": "String"
+			},
+			{
+				"name": "decimalLongitude",
+				"type": "String"
+			},
+			{
+				"name": "coordinateUncertaintyInMeters",
+				"type": "String"
+			},
+			{
+				"name": "coordinatePrecision",
+				"type": "String"
+			},
+			{
+				"name": "elevation",
+				"type": "String"
+			},
+			{
+				"name": "elevationAccuracy",
+				"type": "String"
+			},
+			{
+				"name": "depth",
+				"type": "String"
+			},
+			{
+				"name": "depthAccuracy",
+				"type": "String"
+			},
+			{
+				"name": "eventDate",
+				"type": "String"
+			},
+			{
+				"name": "day",
+				"type": "String"
+			},
+			{
+				"name": "month",
+				"type": "String"
+			},
+			{
+				"name": "year",
+				"type": "String"
+			},
+			{
+				"name": "taxonKey",
+				"type": "String"
+			},
+			{
+				"name": "speciesKey",
+				"type": "String"
+			},
+			{
+				"name": "basisOfRecord",
+				"type": "String"
+			},
+			{
+				"name": "institutionCode",
+				"type": "String"
+			},
+			{
+				"name": "collectionCode",
+				"type": "String"
+			},
+			{
+				"name": "catalogNumber",
+				"type": "String"
+			},
+			{
+				"name": "recordNumber",
+				"type": "String"
+			},
+			{
+				"name": "identifiedBy",
+				"type": "String"
+			},
+			{
+				"name": "dateIdentified",
+				"type": "String"
+			},
+			{
+				"name": "license",
+				"type": "String"
+			},
+			{
+				"name": "rightsHolder",
+				"type": "String"
+			},
+			{
+				"name": "recordedBy",
+				"type": "String"
+			},
+			{
+				"name": "typeStatus",
+				"type": "String"
+			},
+			{
+				"name": "establishmentMeans",
+				"type": "String"
+			},
+			{
+				"name": "lastInterpreted",
+				"type": "String"
+			},
+			{
+				"name": "mediaType",
+				"type": "String"
+			},
+			{
+				"name": "issue",
 				"type": "String"
 			}
 		]

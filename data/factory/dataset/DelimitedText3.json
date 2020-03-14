@@ -1,0 +1,35 @@
+{
+	"name": "DelimitedText3",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "BlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "89026b9a-a28a-4c07-86a5-0df3d4c63817",
+				"folderPath": "bronze",
+				"container": "azureml-blobstore-161de59d-4b18-48db-b440-c4ab874c6822"
+			},
+			"columnDelimiter": "\t",
+			"compressionCodec": "ZipDeflate",
+			"compressionLevel": "Fastest",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "PK\u0003\u0004\u0014\u0000\b\b\b\u0000z�nP\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u0000\u001b\u0000\u0000\u00000020555-200221144449610.csv�R�n�0\f<3�&\u0005��\u0013I�\u0001�D�D$�\u0010)���R�d��^\u0004q�!�C-\u0013ϧ{�h�d\u000fԡ��j%\t��\u0007�\u0012K�m�e\b\tU��H\u0015f̜:",
+				"type": "String"
+			},
+			{
+				"name": "$MA7",
+				"type": "String"
+			}
+		]
+	}
+}

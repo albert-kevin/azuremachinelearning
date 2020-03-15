@@ -4,7 +4,7 @@
 		"description": "we copy from google docs *.xlsx to bronze folder, then the notebook translates to parquet to /silver folder",
 		"activities": [
 			{
-				"name": "Notebook1",
+				"name": "Notebook1_using_cluster",
 				"type": "DatabricksNotebook",
 				"dependsOn": [
 					{
@@ -71,6 +71,33 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Notebook1_new_job_cluster",
+				"type": "DatabricksNotebook",
+				"dependsOn": [
+					{
+						"activity": "copy_googleExcell_to_Blob",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"notebookPath": "/Users/beire_@hotmail.com/bronze.ipynb"
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureDatabricks_new_jobCluster_method",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"annotations": []

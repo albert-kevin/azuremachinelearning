@@ -73,7 +73,7 @@
 				]
 			},
 			{
-				"name": "Notebook1_new_job_cluster",
+				"name": "Notebook2_new_job_cluster",
 				"type": "DatabricksNotebook",
 				"dependsOn": [
 					{

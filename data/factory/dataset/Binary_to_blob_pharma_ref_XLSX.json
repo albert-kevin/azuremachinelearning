@@ -2,17 +2,17 @@
 	"name": "Binary_to_blob_pharma_ref_XLSX",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "BlobStorage1",
+			"referenceName": "azure_ADLS_Gen2",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "Binary",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobStorageLocation",
+				"type": "AzureBlobFSLocation",
 				"fileName": "pharma_ref.xlsx",
 				"folderPath": "bronze",
-				"container": "azureml-blobstore-161de59d-4b18-48db-b440-c4ab874c6822"
+				"fileSystem": "datalake"
 			}
 		}
 	}

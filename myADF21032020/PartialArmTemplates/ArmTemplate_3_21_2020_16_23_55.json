@@ -1,0 +1,46 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "myADF21032020"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/azure_Databricks_Job')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "the goal is to start up a cluster, do work and destroy everything again\n",
+				"annotations": [],
+				"type": "AzureDatabricks",
+				"typeProperties": {
+					"domain": "https://westeurope.azuredatabricks.net",
+					"accessToken": {
+						"type": "SecureString",
+						"value": "**********"
+					},
+					"newClusterNodeType": "Standard_DS3_v2",
+					"newClusterNumOfWorker": "2:8",
+					"newClusterSparkConf": {
+						"spark.serializer": "org.apache.spark.serializer.KryoSerializer",
+						"spark.hadoop.fs.azure.createRemoteFileSystemDuringInitialization": "true",
+						"spark.hadoop.fs.azure.account.key.datalake21032020.dfs.core.windows.net": "Ck/4hMq3Zrzq5toZ96zE6cDncjbw2VdkR9ny1xXA3GLBwQXIv7V1ycSc/KpqyNRcoPWKtzKljjpcZVqjWOu+3Q==",
+						"spark.databricks.delta.preview.enabled": "true"
+					},
+					"newClusterSparkEnvVars": {
+						"PYSPARK_PYTHON": "/databricks/python3/bin/python3"
+					},
+					"newClusterVersion": "6.4.x-scala2.11"
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

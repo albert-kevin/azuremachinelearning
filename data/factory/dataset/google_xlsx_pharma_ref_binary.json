@@ -1,15 +1,16 @@
 {
-	"name": "Binary1",
+	"name": "google_xlsx_pharma_ref_binary",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "HttpServer1",
+			"referenceName": "googleDocs_URL",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "Binary",
 		"typeProperties": {
 			"location": {
-				"type": "HttpServerLocation"
+				"type": "HttpServerLocation",
+				"relativeUrl": "https://docs.google.com/uc?export=download&id=1RU1LCr3HlAW9VQz2DUDXTf4n96gHaQZ3"
 			}
 		}
 	}

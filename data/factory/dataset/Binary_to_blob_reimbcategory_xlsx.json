@@ -1,0 +1,19 @@
+{
+	"name": "Binary_to_blob_reimbcategory_xlsx",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "azure_ADLS_Gen2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "reimb_category.xlsx",
+				"folderPath": "bronze",
+				"fileSystem": "datalake"
+			}
+		}
+	}
+}

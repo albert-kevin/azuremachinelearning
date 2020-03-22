@@ -1,0 +1,33 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "myADF21032020"
+		},
+		"AzureFunction1_functionKey": {
+			"value": ""
+		},
+		"azure_ADLS_Gen2_accountKey": {
+			"value": ""
+		},
+		"azure_Databricks_Job_accessToken": {
+			"value": ""
+		},
+		"dataforbetterhealth_SFTP_password": {
+			"value": ""
+		},
+		"azure_ADLS_Gen2_properties_typeProperties_url": {
+			"value": "https://datalake21032020.dfs.core.windows.net"
+		},
+		"dataforbetterhealth_SFTP_properties_typeProperties_host": {
+			"value": "94.143.190.243"
+		},
+		"dataforbetterhealth_SFTP_properties_typeProperties_userName": {
+			"value": "hackathon"
+		},
+		"googleDocs_URL_properties_typeProperties_url": {
+			"value": "https://docs.google.com"
+		}
+	}
+}

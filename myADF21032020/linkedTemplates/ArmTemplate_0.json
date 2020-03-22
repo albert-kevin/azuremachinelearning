@@ -1,0 +1,575 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "myADF21032020"
+		},
+		"AzureFunction1_functionKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'functionKey' of 'AzureFunction1'"
+		},
+		"azure_ADLS_Gen2_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'azure_ADLS_Gen2'"
+		},
+		"azure_Databricks_Job_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'azure_Databricks_Job'"
+		},
+		"dataforbetterhealth_SFTP_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'dataforbetterhealth_SFTP'"
+		},
+		"azure_ADLS_Gen2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://datalake21032020.dfs.core.windows.net"
+		},
+		"dataforbetterhealth_SFTP_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "94.143.190.243"
+		},
+		"dataforbetterhealth_SFTP_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "hackathon"
+		},
+		"googleDocs_URL_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://docs.google.com"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureFunction1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "here we test a deployed HTTP triggerable function",
+				"annotations": [],
+				"type": "AzureFunction",
+				"typeProperties": {
+					"functionAppUrl": "https://functionapp21032020.azurewebsites.net",
+					"functionKey": {
+						"type": "SecureString",
+						"value": "[parameters('AzureFunction1_functionKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/azure_ADLS_Gen2')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('azure_ADLS_Gen2_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "SecureString",
+						"value": "[parameters('azure_ADLS_Gen2_accountKey')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/azure_Databricks_Job')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "the goal is to start up a cluster, do work and destroy everything again\n",
+				"annotations": [],
+				"type": "AzureDatabricks",
+				"typeProperties": {
+					"domain": "https://westeurope.azuredatabricks.net",
+					"accessToken": {
+						"type": "SecureString",
+						"value": "[parameters('azure_Databricks_Job_accessToken')]"
+					},
+					"existingClusterId": "0321-175436-nays306"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/dataforbetterhealth_SFTP')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "source dataset from RIZIV via SFTP from there Amazon server",
+				"annotations": [],
+				"type": "Sftp",
+				"typeProperties": {
+					"host": "[parameters('dataforbetterhealth_SFTP_properties_typeProperties_host')]",
+					"port": "2222",
+					"skipHostKeyValidation": true,
+					"authenticationType": "Basic",
+					"userName": "[parameters('dataforbetterhealth_SFTP_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('dataforbetterhealth_SFTP_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/googleDocs_URL')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "HttpServer",
+				"typeProperties": {
+					"url": "[parameters('googleDocs_URL_properties_typeProperties_url')]",
+					"enableServerCertificateValidation": false,
+					"authenticationType": "Anonymous"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Binary_to_blob_pharma_ref_XLSX')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "azure_ADLS_Gen2",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "pharma_ref.xlsx",
+						"folderPath": "bronze",
+						"fileSystem": "datalake"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/azure_ADLS_Gen2')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/azure_ADLS_Bronze_Parquet')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "azure_ADLS_Gen2",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "bronze/docph",
+						"fileSystem": "datalake"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/azure_ADLS_Gen2')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/delimitedText_docph_from_SFTP')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "dataforbetterhealth_SFTP",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "SftpLocation",
+						"fileName": "DB_V2.TXT",
+						"folderPath": "/upload"
+					},
+					"columnDelimiter": "\t",
+					"encodingName": "ISO-8859-1",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "account_yy_ss",
+						"type": "String"
+					},
+					{
+						"name": "Province",
+						"type": "String"
+					},
+					{
+						"name": "Type",
+						"type": "String"
+					},
+					{
+						"name": "hosp_serv_id",
+						"type": "String"
+					},
+					{
+						"name": "reimbt_cat_id",
+						"type": "String"
+					},
+					{
+						"name": "drug_code",
+						"type": "String"
+					},
+					{
+						"name": "realization_date",
+						"type": "String"
+					},
+					{
+						"name": "quantity",
+						"type": "String"
+					},
+					{
+						"name": "amount_reimb",
+						"type": "String"
+					},
+					{
+						"name": "amount_not_reimb",
+						"type": "String"
+					},
+					{
+						"name": "Year",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/dataforbetterhealth_SFTP')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/google_xlsx_pharma_ref_binary')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "googleDocs_URL",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Binary",
+				"typeProperties": {
+					"location": {
+						"type": "HttpServerLocation",
+						"relativeUrl": "/uc?export=download&id=1RU1LCr3HlAW9VQz2DUDXTf4n96gHaQZ3"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/googleDocs_URL')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/dataforbetterhealth')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "copy_SFTP_to_Blob_schema_parquet",
+						"description": "copy data from the FTP server to BlobStorage",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "functionApp",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "SftpReadSettings",
+									"recursive": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "ParquetSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "account_yy_ss",
+											"type": "Int32"
+										},
+										"sink": {
+											"name": "account_yy_ss",
+											"type": "Int32"
+										}
+									},
+									{
+										"source": {
+											"name": "Province",
+											"type": "String"
+										},
+										"sink": {
+											"name": "province",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Type",
+											"type": "String"
+										},
+										"sink": {
+											"name": "type",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "hosp_serv_id",
+											"type": "String"
+										},
+										"sink": {
+											"name": "hosp_serv_id",
+											"type": "Int32"
+										}
+									},
+									{
+										"source": {
+											"name": "reimbt_cat_id",
+											"type": "String"
+										},
+										"sink": {
+											"name": "reimbt_cat_id",
+											"type": "Int32"
+										}
+									},
+									{
+										"source": {
+											"name": "drug_code",
+											"type": "String"
+										},
+										"sink": {
+											"name": "drug_code",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "realization_date",
+											"type": "String"
+										},
+										"sink": {
+											"name": "realization_date",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "quantity",
+											"type": "String"
+										},
+										"sink": {
+											"name": "quantity",
+											"type": "Int32"
+										}
+									},
+									{
+										"source": {
+											"name": "amount_reimb",
+											"type": "Single"
+										},
+										"sink": {
+											"name": "amount_reimb",
+											"type": "Single"
+										}
+									},
+									{
+										"source": {
+											"name": "amount_not_reimb",
+											"type": "Single"
+										},
+										"sink": {
+											"name": "amount_not_reimb",
+											"type": "Single"
+										}
+									},
+									{
+										"source": {
+											"name": "Year",
+											"type": "Int32"
+										},
+										"sink": {
+											"name": "year",
+											"type": "Int32"
+										}
+									}
+								]
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "delimitedText_docph_from_SFTP",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "azure_ADLS_Bronze_Parquet",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "copy_googleExcell_to_Blob",
+						"description": "",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "copy_SFTP_to_Blob_schema_parquet",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "BinarySource",
+								"storeSettings": {
+									"type": "HttpReadSettings",
+									"requestMethod": "GET"
+								}
+							},
+							"sink": {
+								"type": "BinarySink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "google_xlsx_pharma_ref_binary",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "Binary_to_blob_pharma_ref_XLSX",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "functionApp",
+						"description": "",
+						"type": "AzureFunctionActivity",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"functionName": "HttpTrigger1",
+							"method": "POST",
+							"headers": {},
+							"body": {
+								"name": "Kevin Albert"
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureFunction1",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "ETL_xlsx_to_parquet",
+						"type": "DatabricksNotebook",
+						"dependsOn": [
+							{
+								"activity": "copy_googleExcell_to_Blob",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"notebookPath": "/Users/beire_@hotmail.com/bronze"
+						},
+						"linkedServiceName": {
+							"referenceName": "azure_Databricks_Job",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/delimitedText_docph_from_SFTP')]",
+				"[concat(variables('factoryId'), '/datasets/azure_ADLS_Bronze_Parquet')]",
+				"[concat(variables('factoryId'), '/datasets/google_xlsx_pharma_ref_binary')]",
+				"[concat(variables('factoryId'), '/datasets/Binary_to_blob_pharma_ref_XLSX')]",
+				"[concat(variables('factoryId'), '/linkedServices/AzureFunction1')]",
+				"[concat(variables('factoryId'), '/linkedServices/azure_Databricks_Job')]"
+			]
+		}
+	]
+}

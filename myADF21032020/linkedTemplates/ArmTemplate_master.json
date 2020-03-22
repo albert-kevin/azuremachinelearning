@@ -1,0 +1,98 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "myADF21032020"
+		},
+		"AzureFunction1_functionKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'functionKey' of 'AzureFunction1'"
+		},
+		"azure_ADLS_Gen2_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'azure_ADLS_Gen2'"
+		},
+		"azure_Databricks_Job_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'azure_Databricks_Job'"
+		},
+		"dataforbetterhealth_SFTP_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'dataforbetterhealth_SFTP'"
+		},
+		"azure_ADLS_Gen2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://datalake21032020.dfs.core.windows.net"
+		},
+		"dataforbetterhealth_SFTP_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "94.143.190.243"
+		},
+		"dataforbetterhealth_SFTP_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "hackathon"
+		},
+		"googleDocs_URL_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://docs.google.com"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureFunction1_functionKey": {
+						"value": "[parameters('AzureFunction1_functionKey')]"
+					},
+					"azure_ADLS_Gen2_accountKey": {
+						"value": "[parameters('azure_ADLS_Gen2_accountKey')]"
+					},
+					"azure_Databricks_Job_accessToken": {
+						"value": "[parameters('azure_Databricks_Job_accessToken')]"
+					},
+					"dataforbetterhealth_SFTP_password": {
+						"value": "[parameters('dataforbetterhealth_SFTP_password')]"
+					},
+					"azure_ADLS_Gen2_properties_typeProperties_url": {
+						"value": "[parameters('azure_ADLS_Gen2_properties_typeProperties_url')]"
+					},
+					"dataforbetterhealth_SFTP_properties_typeProperties_host": {
+						"value": "[parameters('dataforbetterhealth_SFTP_properties_typeProperties_host')]"
+					},
+					"dataforbetterhealth_SFTP_properties_typeProperties_userName": {
+						"value": "[parameters('dataforbetterhealth_SFTP_properties_typeProperties_userName')]"
+					},
+					"googleDocs_URL_properties_typeProperties_url": {
+						"value": "[parameters('googleDocs_URL_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

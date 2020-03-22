@@ -219,6 +219,31 @@
 				]
 			},
 			{
+				"name": "functionApp",
+				"description": "",
+				"type": "AzureFunctionActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"functionName": "HttpTrigger1",
+					"method": "POST",
+					"body": {
+						"name": "Kevin Albert"
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureFunction1",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
 				"name": "ETL_xlsx_to_parquet",
 				"type": "DatabricksNotebook",
 				"dependsOn": [
@@ -242,31 +267,6 @@
 				},
 				"linkedServiceName": {
 					"referenceName": "azure_Databricks_Job",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "functionApp",
-				"description": "",
-				"type": "AzureFunctionActivity",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"functionName": "HttpTrigger1",
-					"method": "POST",
-					"body": {
-						"name": "Kevin Albert"
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "AzureFunction1",
 					"type": "LinkedServiceReference"
 				}
 			}

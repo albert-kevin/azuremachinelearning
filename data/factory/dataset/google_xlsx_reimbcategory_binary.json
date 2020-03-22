@@ -1,0 +1,17 @@
+{
+	"name": "google_xlsx_reimbcategory_binary",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "googleDocs_URL",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "/file/d/1kO0yJ6QDVsQxOBeR_xDnw2VS28NnbNv2/view?usp=sharing"
+			}
+		}
+	}
+}

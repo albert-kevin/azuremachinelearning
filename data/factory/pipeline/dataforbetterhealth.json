@@ -6,14 +6,7 @@
 				"name": "copy_SFTP_to_Blob_schema_parquet",
 				"description": "copy data from the FTP server to BlobStorage",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "functionApp",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -173,14 +166,7 @@
 				"name": "copy_googleExcell_to_Blob",
 				"description": "",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "copy_SFTP_to_Blob_schema_parquet",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -252,6 +238,24 @@
 						"dependencyConditions": [
 							"Succeeded"
 						]
+					},
+					{
+						"activity": "copy_googleXLS_reimbcat_to_Blob",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "copy_SFTP_to_Blob_schema_parquet",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "functionApp",
+						"dependencyConditions": [
+							"Succeeded"
+						]
 					}
 				],
 				"policy": {
@@ -269,6 +273,48 @@
 					"referenceName": "azure_Databricks_Job",
 					"type": "LinkedServiceReference"
 				}
+			},
+			{
+				"name": "copy_googleXLS_reimbcat_to_Blob",
+				"description": "",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "BinarySource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "google_xlsx_reimbcategory_binary",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Binary_to_blob_reimbcategory_xlsx",
+						"type": "DatasetReference"
+					}
+				]
 			}
 		],
 		"annotations": []

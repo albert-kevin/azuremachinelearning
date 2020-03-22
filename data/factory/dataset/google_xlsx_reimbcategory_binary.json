@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "HttpServerLocation",
-				"relativeUrl": "/file/d/1kO0yJ6QDVsQxOBeR_xDnw2VS28NnbNv2/view?usp=sharing"
+				"relativeUrl": "/file/d/1kO0yJ6QDVsQxOBeR_xDnw2VS28NnbNv2"
 			}
 		}
 	}

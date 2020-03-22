@@ -71,8 +71,8 @@ display(pharma_ref_koalasDF.head(3))
 # COMMAND ----------
 
 # save parquet only in a folder (not filename.parquet !)
-pharma_ref_koalasDF.to_parquet("/mnt/adlsGen2/silver/pharma_ref_parquet")
+pharma_ref_koalasDF.to_parquet("/mnt/adlsGen2/bronze/pharma_ref_parquet")
 
 # COMMAND ----------
 
-# MAGIC %fs ls /mnt/adlsGen2/silver
+# MAGIC %fs ls /mnt/adlsGen2/bronze

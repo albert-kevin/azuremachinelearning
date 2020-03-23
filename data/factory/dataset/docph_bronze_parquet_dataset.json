@@ -1,0 +1,66 @@
+{
+	"name": "docph_bronze_parquet_dataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "azure_ADLS_Gen2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "DB_V2.parquet",
+				"folderPath": "bronze/docph",
+				"fileSystem": "datalake"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "account_yy_ss",
+				"type": "INT32"
+			},
+			{
+				"name": "province",
+				"type": "UTF8"
+			},
+			{
+				"name": "type",
+				"type": "UTF8"
+			},
+			{
+				"name": "hosp_serv_id",
+				"type": "UTF8"
+			},
+			{
+				"name": "reimbt_cat_id",
+				"type": "UTF8"
+			},
+			{
+				"name": "drug_code",
+				"type": "UTF8"
+			},
+			{
+				"name": "realization_date",
+				"type": "UTF8"
+			},
+			{
+				"name": "quantity",
+				"type": "UTF8"
+			},
+			{
+				"name": "amount_reimb",
+				"type": "FLOAT"
+			},
+			{
+				"name": "amount_not_reimb",
+				"type": "FLOAT"
+			},
+			{
+				"name": "year",
+				"type": "INT32"
+			}
+		]
+	}
+}

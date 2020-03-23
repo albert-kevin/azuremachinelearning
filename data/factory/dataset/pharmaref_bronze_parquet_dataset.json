@@ -13,7 +13,7 @@
 				"folderPath": "bronze/pharma_ref_parquet",
 				"fileSystem": "datalake"
 			},
-			"compressionCodec": "snappy"
+			"compressionCodec": "none"
 		},
 		"schema": [
 			{

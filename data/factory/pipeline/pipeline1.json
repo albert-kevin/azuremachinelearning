@@ -25,7 +25,7 @@
 						"PipelineName": "@{pipeline().Pipeline}",
 						"Subject": "An error has occurred!",
 						"ErrorMessage": "The ADF pipeline has crashed! Please check the logs.",
-						"EmailTo": "myemail@outlook.com"
+						"EmailTo": "kevin.albert@atos.net"
 					}
 				}
 			}

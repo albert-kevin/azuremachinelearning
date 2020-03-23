@@ -1,0 +1,28 @@
+{
+	"name": "dataflow1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "pharmaref_bronze_parquet_dataset",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "dataflow_silver_parquet_dataset",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [],
+			"script": "source(output(\n\t\ttrim_pharma as long,\n\t\tdrug_code as string,\n\t\tproduit_pharma as string,\n\t\ttype_drug_code as string,\n\t\tfamille_produit_pharma as string,\n\t\tdrug_name_aggregated as string,\n\t\tnom_produit_pharma as string,\n\t\tconditionnement as string,\n\t\tmode_administration as string,\n\t\tnom_firme_pharma as string,\n\t\tdate_debut_rembourse as timestamp,\n\t\tstatut_produit_pharma as string,\n\t\tcode_atc as string,\n\t\tcode_atc_5 as string,\n\t\tcode_atc_4 as string,\n\t\tcode_atc_3 as string,\n\t\tcode_atc_1 as string,\n\t\tDDD as double,\n\t\tnombre_prises as long,\n\t\torphan_flag as long,\n\t\tchapter_IV_bis_flag as long,\n\t\tlink_same_tablet as long\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tlimit: 100,\n\tfileList: true,\n\tformat: 'parquet') ~> source1\nsource1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'parquet',\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> sink1"
+		}
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"name": "dataflow_silver_parquet_dataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "azure_ADLS_Gen2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "silver",
+				"fileSystem": "datalake"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	}
+}

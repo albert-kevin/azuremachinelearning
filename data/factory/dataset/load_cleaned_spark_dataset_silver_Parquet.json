@@ -1,0 +1,157 @@
+{
+	"name": "load_cleaned_spark_dataset_silver_Parquet",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "azure_ADLS_Gen2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "silver/dataforbetterhealth_parquet",
+				"fileSystem": "datalake"
+			},
+			"compressionCodec": "none"
+		},
+		"schema": [
+			{
+				"name": "province",
+				"type": "UTF8"
+			},
+			{
+				"name": "hosp_serv_id",
+				"type": "UTF8"
+			},
+			{
+				"name": "reimbt_cat_id",
+				"type": "UTF8"
+			},
+			{
+				"name": "drug_code",
+				"type": "UTF8"
+			},
+			{
+				"name": "realization_date",
+				"type": "UTF8"
+			},
+			{
+				"name": "quantity",
+				"type": "INT32"
+			},
+			{
+				"name": "amount_reimb",
+				"type": "FLOAT"
+			},
+			{
+				"name": "amount_not_reimb",
+				"type": "FLOAT"
+			},
+			{
+				"name": "trim_pharma",
+				"type": "INT64"
+			},
+			{
+				"name": "produit_pharma",
+				"type": "UTF8"
+			},
+			{
+				"name": "type_drug_code",
+				"type": "UTF8"
+			},
+			{
+				"name": "famille_produit_pharma",
+				"type": "UTF8"
+			},
+			{
+				"name": "drug_name_aggregated",
+				"type": "UTF8"
+			},
+			{
+				"name": "conditionnement",
+				"type": "UTF8"
+			},
+			{
+				"name": "mode_administration",
+				"type": "UTF8"
+			},
+			{
+				"name": "date_debut_rembourse",
+				"type": "INT96"
+			},
+			{
+				"name": "statut_produit_pharma",
+				"type": "UTF8"
+			},
+			{
+				"name": "code_atc",
+				"type": "UTF8"
+			},
+			{
+				"name": "code_atc_5",
+				"type": "UTF8"
+			},
+			{
+				"name": "code_atc_4",
+				"type": "UTF8"
+			},
+			{
+				"name": "code_atc_3",
+				"type": "UTF8"
+			},
+			{
+				"name": "code_atc_1",
+				"type": "UTF8"
+			},
+			{
+				"name": "DDD",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "nombre_prises",
+				"type": "INT64"
+			},
+			{
+				"name": "orphan_flag",
+				"type": "INT64"
+			},
+			{
+				"name": "chapter_IV_bis_flag",
+				"type": "INT64"
+			},
+			{
+				"name": "link_same_tablet",
+				"type": "INT64"
+			},
+			{
+				"name": "dbegin",
+				"type": "INT96"
+			},
+			{
+				"name": "dend",
+				"type": "INT96"
+			},
+			{
+				"name": "reimbt_cat_desc_nl",
+				"type": "UTF8"
+			},
+			{
+				"name": "reimbt_crit_long",
+				"type": "UTF8"
+			},
+			{
+				"name": "reimbt_crit_short",
+				"type": "UTF8"
+			},
+			{
+				"name": "reimbt_cat_fixed_rate_yn",
+				"type": "INT64"
+			},
+			{
+				"name": "fee_cat",
+				"type": "UTF8"
+			}
+		]
+	}
+}

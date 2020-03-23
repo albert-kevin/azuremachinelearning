@@ -1,17 +1,17 @@
 {
-	"name": "Parquet1",
+	"name": "azure_ADLS_Bronze_Parquet",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "BlobStorage1",
+			"referenceName": "azure_ADLS_Gen2",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "Parquet",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobStorageLocation",
-				"folderPath": "bronze",
-				"container": "azureml-blobstore-161de59d-4b18-48db-b440-c4ab874c6822"
+				"type": "AzureBlobFSLocation",
+				"folderPath": "bronze/docph",
+				"fileSystem": "datalake"
 			},
 			"compressionCodec": "snappy"
 		},

@@ -20,17 +20,21 @@ import databricks.koalas as pd     #preferred method (default: import databricks
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC Verify mounts
+# MAGIC Verify mounts  
+# MAGIC   * check for mounted filesystems, azure datalake gen2
+# MAGIC   * check filesystem content
 
 # COMMAND ----------
 
-# check for mounted filesystems, azure datalake gen2
-%fs mounts
+# MAGIC %fs mounts
 
 # COMMAND ----------
 
-# check filesystem content
-%fs ls /mnt/adlsGen2/
+# MAGIC %fs ls /mnt/adlsGen2
+
+# COMMAND ----------
+
+# MAGIC %fs ls /mnt/adlsGen2/bronze
 
 # COMMAND ----------
 
@@ -40,11 +44,11 @@ import databricks.koalas as pd     #preferred method (default: import databricks
 # COMMAND ----------
 
 # read in for example an *.xlsx
-pharma_ref_koalasDF = pd.read_excel("/mnt/adlsGen2/bronze/pharma_ref.xlsx", dtype={"drug_code":'str', "produit_pharma":'str'})
+pharma_ref_koalasDF = pd.read_excel("/dbfs/mnt/adlsGen2/bronze/pharma_ref.xlsx", dtype={"drug_code":'str', "produit_pharma":'str'})
 
 # COMMAND ----------
 
-display(df.head(3))
+display(pharma_ref_koalasDF.head(3))
 
 # COMMAND ----------
 
@@ -67,4 +71,8 @@ display(df.head(3))
 # COMMAND ----------
 
 # save parquet only in a folder (not filename.parquet !)
-pharma_ref_koalasDF.to_parquet("/mnt/adlsGen2/silver/pharma_ref_parquet")
+pharma_ref_koalasDF.to_parquet("/mnt/adlsGen2/bronze/pharma_ref_parquet")
+
+# COMMAND ----------
+
+# MAGIC %fs ls /mnt/adlsGen2/bronze

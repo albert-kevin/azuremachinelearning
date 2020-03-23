@@ -11,7 +11,7 @@
 			"skipHostKeyValidation": true,
 			"authenticationType": "Basic",
 			"userName": "hackathon",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIk1ZQURGMTQwMzIwMjBfZmFmYTg4NWEtNDUyZS00MWFmLTljNmItMDE0ZmJlNTMxYTE4Ig0KfQ=="
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIk1ZQURGMjEwMzIwMjBfMWI4YjY5MTgtMWMxOS00ODI1LWJiYWEtN2RkNDViOGVlYjJhIg0KfQ=="
 		}
 	}
 }

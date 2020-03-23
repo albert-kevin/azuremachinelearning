@@ -1,0 +1,17 @@
+{
+	"name": "google_xlsx_pharma_ref_binary",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "googleDocs_URL",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": "/uc?export=download&id=1RU1LCr3HlAW9VQz2DUDXTf4n96gHaQZ3"
+			}
+		}
+	}
+}

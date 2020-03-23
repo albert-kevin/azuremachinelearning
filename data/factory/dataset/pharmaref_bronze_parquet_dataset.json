@@ -1,0 +1,109 @@
+{
+	"name": "pharmaref_bronze_parquet_dataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "azure_ADLS_Gen2",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "bronze/pharma_ref_parquet",
+				"fileSystem": "datalake"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "trim_pharma",
+				"type": "INT64"
+			},
+			{
+				"name": "drug_code",
+				"type": "UTF8"
+			},
+			{
+				"name": "produit_pharma",
+				"type": "UTF8"
+			},
+			{
+				"name": "type_drug_code",
+				"type": "UTF8"
+			},
+			{
+				"name": "famille_produit_pharma",
+				"type": "UTF8"
+			},
+			{
+				"name": "drug_name_aggregated",
+				"type": "UTF8"
+			},
+			{
+				"name": "nom_produit_pharma",
+				"type": "UTF8"
+			},
+			{
+				"name": "conditionnement",
+				"type": "UTF8"
+			},
+			{
+				"name": "mode_administration",
+				"type": "UTF8"
+			},
+			{
+				"name": "nom_firme_pharma",
+				"type": "UTF8"
+			},
+			{
+				"name": "date_debut_rembourse",
+				"type": "INT96"
+			},
+			{
+				"name": "statut_produit_pharma",
+				"type": "UTF8"
+			},
+			{
+				"name": "code_atc",
+				"type": "UTF8"
+			},
+			{
+				"name": "code_atc_5",
+				"type": "UTF8"
+			},
+			{
+				"name": "code_atc_4",
+				"type": "UTF8"
+			},
+			{
+				"name": "code_atc_3",
+				"type": "UTF8"
+			},
+			{
+				"name": "code_atc_1",
+				"type": "UTF8"
+			},
+			{
+				"name": "DDD",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "nombre_prises",
+				"type": "INT64"
+			},
+			{
+				"name": "orphan_flag",
+				"type": "INT64"
+			},
+			{
+				"name": "chapter_IV_bis_flag",
+				"type": "INT64"
+			},
+			{
+				"name": "link_same_tablet",
+				"type": "INT64"
+			}
+		]
+	}
+}

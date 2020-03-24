@@ -9,51 +9,112 @@ import databricks.koalas as pd
 
 # COMMAND ----------
 
-# MAGIC %fs ls /mnt/
+# MAGIC %fs mounts
 
 # COMMAND ----------
 
 koalasDF1 = pd.DataFrame({"col1":["a","b","c"], "col2":[1,2,3]})
 koalasDF2 = pd.DataFrame({"col1":["d","e","f"], "col2":[4,5,6]})
+koalasDF3 = pd.DataFrame({"col1":[7,8,9], "col2":["g","h","i"]})
 
 # COMMAND ----------
 
-type(koalasDF1)
+print(type(koalasDF1))
+print(type(koalasDF2))
 
 # COMMAND ----------
 
-# write koalasDf1 
+# save the first koalasDF1 dataframe onto disk as a Delta Lake
+# even if there were already files it simply add, but ignores previous upon a read of latest version
 koalasDF1.to_delta(path="dbfs:/mnt/adlsGen2/delta/koalas-DF", mode="overwrite")
 
 # COMMAND ----------
 
-# append koalasDF2
+# append koalasDF2 from any other notebook into the same storage location and same Schema
+# mode = "append"  means it add these records and update the logs
 koalasDF2.to_delta(path="dbfs:/mnt/adlsGen2/delta/koalas-DF", mode="append")
 
 # COMMAND ----------
 
-# if we read in the data will it be larger ?
+# appending koalasD3 with a mismatched schema will fail and enforce a message saving future trouble
+## Failed to merge incompatible data types StringType and LongType
+
+koalasDF3.to_delta(path="dbfs:/mnt/adlsGen2/delta/koalas-DF", mode="append")
+
+# COMMAND ----------
+
+# let's open a connection to the delta lake named "koalasDF" as a dynamic dataframe
 koalasDF = pd.read_delta(path="dbfs:/mnt/adlsGen2/delta/koalas-DF")
+
+# COMMAND ----------
+
+# the amount of records should be 3 + 3
 len(koalasDF)
 
 # COMMAND ----------
 
+# still seen as a koalas dataframe
 type(koalasDF)
 
 # COMMAND ----------
 
+# it lost indexing and created a new one, but it shows the 6 records
 koalasDF
 
 # COMMAND ----------
 
+# remember we had 6 records
 len(koalasDF)
 
 # COMMAND ----------
 
-# let's test by adding 9 more records in 3 write actions
+# let's test by adding 9 more records in 3 write actions 3 + 3 + 3 using "append"
+# ‘append’: Append the new data to existing data
+# ‘overwrite’: Overwrite existing data
+# ‘ignore’: Silently ignore this operation if data already exists
+# ‘error’ or ‘errorifexists’: Throw an exception if data already exists
 koalasDF2.to_delta(path="dbfs:/mnt/adlsGen2/delta/koalas-DF", mode="append")
 koalasDF2.to_delta(path="dbfs:/mnt/adlsGen2/delta/koalas-DF", mode="append")
 koalasDF2.to_delta(path="dbfs:/mnt/adlsGen2/delta/koalas-DF", mode="append")
+
+# COMMAND ----------
+
+# expect to have 6 + 9 just by calling the dataframe !
+# it simply updates automatically, no need for reading in the dataframe
+len(koalasDF)
+
+# COMMAND ----------
+
+# MAGIC %fs ls "dbfs:/mnt/adlsGen2/delta/koalas-DF"
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC to see the old revisions of data changes
+
+# COMMAND ----------
+
+# MAGIC %fs ls "dbfs:/mnt/adlsGen2/delta/koalas-DF/_delta_log"
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC let's try to load an older revision, for example the first creation and then show its content
+
+# COMMAND ----------
+
+koalasDF = pd.read_delta(path="dbfs:/mnt/adlsGen2/delta/koalas-DF", version=0)
+
+# COMMAND ----------
+
+# ideal for testing, or other stuff
+# notice, it shows 3x records and not 15x
+koalasDF
+
+# COMMAND ----------
+
+# loading the latest version again
+koalasDF = pd.read_delta(path="dbfs:/mnt/adlsGen2/delta/koalas-DF")
 
 # COMMAND ----------
 
@@ -61,103 +122,26 @@ len(koalasDF)
 
 # COMMAND ----------
 
-
-
-# COMMAND ----------
-
-
+# MAGIC %fs ls "dbfs:/mnt/adlsGen2/delta/koalas-DF/_delta_log"
 
 # COMMAND ----------
 
-
-
-# COMMAND ----------
-
-
+# or loading a specific timestamp
+#koalasDF = pd.read_delta(path="dbfs:/mnt/adlsGen2/delta/koalas-DF", timestamp="2020-03-24 09:34:32.000")
 
 # COMMAND ----------
 
-
-
-# COMMAND ----------
-
-pharma_ref_koalasDF = pd.read_excel("/dbfs/mnt/adlsGen2/bronze/pharma_ref.xlsx", dtype={"drug_code":'str', "produit_pharma":'str'})
-
-# COMMAND ----------
-
-# koalas --> spark
-rawDataDF = pharma_ref_koalasDF.to_spark()
-
-# COMMAND ----------
-
-deltaDataPath = "dbfs:/mnt/adlsGen2/delta/customer-data-using-spark/"
-
-# COMMAND ----------
-
-# write to delta dataset (parquet files)
-rawDataDF.write.mode("overwrite").format("delta").save("dbfs:/mnt/adlsGen2/delta/customer-data-using-spark/")
-
-# COMMAND ----------
-
-#koalas delta
-pharma_ref_koalasDF.to_delta(path="dbfs:/mnt/adlsGen2/delta/customer-data-using-koalas/", mode="overwrite")
-
-# COMMAND ----------
-
-spark.sql("""
-  DROP TABLE IF EXISTS pharmaref_delta
+# let's demonstrate you can run SQL code on the dataframe in {}
+pd.sql("""
+SELECT * FROM {koalasDF}
+WHERE col1 = 'e'
+LIMIT 5
 """)
-spark.sql("""
-  CREATE TABLE pharmaref_delta 
-  USING DELTA 
-  LOCATION '{}' 
-""".format("dbfs:/mnt/adlsGen2/delta/customer-data-using-spark/"))
-#deltaDataPath = "dbfs:/mnt/adlsGen2/delta/customer-data/"
 
 # COMMAND ----------
 
-# MAGIC %sql
-# MAGIC SELECT count(*) FROM pharmaref_delta
-
-# COMMAND ----------
-
-len(pharma_ref_koalasDF)
-
-# COMMAND ----------
-
-#pharma_ref_koalasDF.head(5).to_csv("dbfs:/mnt/adlsGen2/temp")
-extra_data = pd.read_csv("dbfs:/mnt/adlsGen2/temp",
-                         dtype={"drug_code":'str', "produit_pharma":'str', 'trim_pharma':'int64',
-                                'nombre_prises':'int64', "orphan_flag":'int64', "chapter_IV_bis_flag":'int64', "link_same_tablet":'int64'})
-pharma_ref_koalasDF.dtypes
-
-# COMMAND ----------
-
-extra_data.dtypes
-
-# COMMAND ----------
-
-#koalas delta
-extra_data.to_delta(path="dbfs:/mnt/adlsGen2/delta/customer-data-using-koalas/", mode="append")
-
-# COMMAND ----------
-
-len(extra_data)
-
-# COMMAND ----------
-
-# 36898 + 5 = 36903
-len(pharma_ref_koalasDF)
-
-# COMMAND ----------
-
-# MAGIC %sql
-# MAGIC DESCRIBE DETAIL pharmaref_delta
-
-# COMMAND ----------
-
-# lets add data
-pharma_ref_koalasDF.write.mode("append").format("delta").save("dbfs:/mnt/adlsGen2/delta/customer-data-using-spark/")
+# you can use Spark visualizations display()
+display(koalasDF.plot.line(x="col1", y="col2", title="show the trend"))
 
 # COMMAND ----------
 

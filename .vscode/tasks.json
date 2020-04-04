@@ -8,7 +8,7 @@
       "isBackground": true,
       "dependsOn": "pipInstall",
       "options": {
-        "cwd": "${workspaceFolder}/code/python/kevin"
+        "cwd": "${workspaceFolder}/code/functionapps/modelDeployment"
       }
     },
     {
@@ -25,7 +25,7 @@
       },
       "problemMatcher": [],
       "options": {
-        "cwd": "${workspaceFolder}/code/python/kevin"
+        "cwd": "${workspaceFolder}/code/functionapps/modelDeployment"
       }
     }
   ]

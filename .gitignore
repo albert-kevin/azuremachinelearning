@@ -1,7 +1,13 @@
-data/ignored
-neo4j
+data/bronze
+data/silver
+data/gold
+data/platinum
+neo4j/
 .cache
 .ipython
 .local
 .config
+.vscode/
 code/.ipynb_checkpoints
+code/notebooks/
+! code/notebooks/*.ipynb

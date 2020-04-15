@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "ML Execute Pipeline1",
+				"name": "two_step_pipeline_test",
 				"type": "AzureMLExecutePipeline",
 				"dependsOn": [],
 				"policy": {
@@ -13,7 +13,14 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": []
+				"userProperties": [],
+				"typeProperties": {
+					"mlPipelineId": "5a972f89-6d5b-4866-b958-561042ea62de"
+				},
+				"linkedServiceName": {
+					"referenceName": "ml_workspace_Service",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"annotations": []

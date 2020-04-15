@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'functionKey' of 'AzureFunction1'"
 		},
+		"AzureMLServiceLS_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'AzureMLServiceLS'"
+		},
 		"azure_ADLS_Gen2_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'azure_ADLS_Gen2'"
@@ -22,6 +26,26 @@
 		"dataforbetterhealth_SFTP_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'dataforbetterhealth_SFTP'"
+		},
+		"ml_workspace_Service_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'ml_workspace_Service'"
+		},
+		"AzureMLServiceLS_properties_typeProperties_subscriptionId": {
+			"type": "string",
+			"defaultValue": "43c1f93a-903d-4b23-a4bf-92bd7a150627"
+		},
+		"AzureMLServiceLS_properties_typeProperties_resourceGroupName": {
+			"type": "string",
+			"defaultValue": "myResourceGroup"
+		},
+		"AzureMLServiceLS_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "38c02221-4a41-4ec8-b8da-a81f16c38e82"
+		},
+		"AzureMLServiceLS_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "73b49191-8db3-45ab-87b3-b8f956ac123b"
 		},
 		"azure_ADLS_Gen2_properties_typeProperties_url": {
 			"type": "string",
@@ -38,6 +62,22 @@
 		"googleDocs_URL_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://docs.google.com"
+		},
+		"ml_workspace_Service_properties_typeProperties_subscriptionId": {
+			"type": "string",
+			"defaultValue": "43c1f93a-903d-4b23-a4bf-92bd7a150627"
+		},
+		"ml_workspace_Service_properties_typeProperties_resourceGroupName": {
+			"type": "string",
+			"defaultValue": "myResourceGroup"
+		},
+		"ml_workspace_Service_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "38c02221-4a41-4ec8-b8da-a81f16c38e82"
+		},
+		"ml_workspace_Service_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "73b49191-8db3-45ab-87b3-b8f956ac123b"
 		},
 		"containerUri": {
 			"type": "string",
@@ -69,6 +109,9 @@
 					"AzureFunction1_functionKey": {
 						"value": "[parameters('AzureFunction1_functionKey')]"
 					},
+					"AzureMLServiceLS_servicePrincipalKey": {
+						"value": "[parameters('AzureMLServiceLS_servicePrincipalKey')]"
+					},
 					"azure_ADLS_Gen2_accountKey": {
 						"value": "[parameters('azure_ADLS_Gen2_accountKey')]"
 					},
@@ -77,6 +120,21 @@
 					},
 					"dataforbetterhealth_SFTP_password": {
 						"value": "[parameters('dataforbetterhealth_SFTP_password')]"
+					},
+					"ml_workspace_Service_servicePrincipalKey": {
+						"value": "[parameters('ml_workspace_Service_servicePrincipalKey')]"
+					},
+					"AzureMLServiceLS_properties_typeProperties_subscriptionId": {
+						"value": "[parameters('AzureMLServiceLS_properties_typeProperties_subscriptionId')]"
+					},
+					"AzureMLServiceLS_properties_typeProperties_resourceGroupName": {
+						"value": "[parameters('AzureMLServiceLS_properties_typeProperties_resourceGroupName')]"
+					},
+					"AzureMLServiceLS_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('AzureMLServiceLS_properties_typeProperties_servicePrincipalId')]"
+					},
+					"AzureMLServiceLS_properties_typeProperties_tenant": {
+						"value": "[parameters('AzureMLServiceLS_properties_typeProperties_tenant')]"
 					},
 					"azure_ADLS_Gen2_properties_typeProperties_url": {
 						"value": "[parameters('azure_ADLS_Gen2_properties_typeProperties_url')]"
@@ -89,6 +147,18 @@
 					},
 					"googleDocs_URL_properties_typeProperties_url": {
 						"value": "[parameters('googleDocs_URL_properties_typeProperties_url')]"
+					},
+					"ml_workspace_Service_properties_typeProperties_subscriptionId": {
+						"value": "[parameters('ml_workspace_Service_properties_typeProperties_subscriptionId')]"
+					},
+					"ml_workspace_Service_properties_typeProperties_resourceGroupName": {
+						"value": "[parameters('ml_workspace_Service_properties_typeProperties_resourceGroupName')]"
+					},
+					"ml_workspace_Service_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('ml_workspace_Service_properties_typeProperties_servicePrincipalId')]"
+					},
+					"ml_workspace_Service_properties_typeProperties_tenant": {
+						"value": "[parameters('ml_workspace_Service_properties_typeProperties_tenant')]"
 					}
 				}
 			},

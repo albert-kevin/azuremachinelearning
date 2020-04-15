@@ -8,6 +8,9 @@
 		"AzureFunction1_functionKey": {
 			"value": ""
 		},
+		"AzureMLServiceLS_servicePrincipalKey": {
+			"value": ""
+		},
 		"azure_ADLS_Gen2_accountKey": {
 			"value": ""
 		},
@@ -16,6 +19,21 @@
 		},
 		"dataforbetterhealth_SFTP_password": {
 			"value": ""
+		},
+		"ml_workspace_Service_servicePrincipalKey": {
+			"value": ""
+		},
+		"AzureMLServiceLS_properties_typeProperties_subscriptionId": {
+			"value": "43c1f93a-903d-4b23-a4bf-92bd7a150627"
+		},
+		"AzureMLServiceLS_properties_typeProperties_resourceGroupName": {
+			"value": "myResourceGroup"
+		},
+		"AzureMLServiceLS_properties_typeProperties_servicePrincipalId": {
+			"value": "38c02221-4a41-4ec8-b8da-a81f16c38e82"
+		},
+		"AzureMLServiceLS_properties_typeProperties_tenant": {
+			"value": "73b49191-8db3-45ab-87b3-b8f956ac123b"
 		},
 		"azure_ADLS_Gen2_properties_typeProperties_url": {
 			"value": "https://datalake21032020.dfs.core.windows.net"
@@ -28,6 +46,18 @@
 		},
 		"googleDocs_URL_properties_typeProperties_url": {
 			"value": "https://docs.google.com"
+		},
+		"ml_workspace_Service_properties_typeProperties_subscriptionId": {
+			"value": "43c1f93a-903d-4b23-a4bf-92bd7a150627"
+		},
+		"ml_workspace_Service_properties_typeProperties_resourceGroupName": {
+			"value": "myResourceGroup"
+		},
+		"ml_workspace_Service_properties_typeProperties_servicePrincipalId": {
+			"value": "38c02221-4a41-4ec8-b8da-a81f16c38e82"
+		},
+		"ml_workspace_Service_properties_typeProperties_tenant": {
+			"value": "73b49191-8db3-45ab-87b3-b8f956ac123b"
 		}
 	}
 }

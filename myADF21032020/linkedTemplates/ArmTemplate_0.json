@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'functionKey' of 'AzureFunction1'"
 		},
+		"AzureMLServiceLS_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'AzureMLServiceLS'"
+		},
 		"azure_ADLS_Gen2_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'azure_ADLS_Gen2'"
@@ -22,6 +26,26 @@
 		"dataforbetterhealth_SFTP_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'dataforbetterhealth_SFTP'"
+		},
+		"ml_workspace_Service_servicePrincipalKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'servicePrincipalKey' of 'ml_workspace_Service'"
+		},
+		"AzureMLServiceLS_properties_typeProperties_subscriptionId": {
+			"type": "string",
+			"defaultValue": "43c1f93a-903d-4b23-a4bf-92bd7a150627"
+		},
+		"AzureMLServiceLS_properties_typeProperties_resourceGroupName": {
+			"type": "string",
+			"defaultValue": "myResourceGroup"
+		},
+		"AzureMLServiceLS_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "38c02221-4a41-4ec8-b8da-a81f16c38e82"
+		},
+		"AzureMLServiceLS_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "73b49191-8db3-45ab-87b3-b8f956ac123b"
 		},
 		"azure_ADLS_Gen2_properties_typeProperties_url": {
 			"type": "string",
@@ -38,6 +62,22 @@
 		"googleDocs_URL_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://docs.google.com"
+		},
+		"ml_workspace_Service_properties_typeProperties_subscriptionId": {
+			"type": "string",
+			"defaultValue": "43c1f93a-903d-4b23-a4bf-92bd7a150627"
+		},
+		"ml_workspace_Service_properties_typeProperties_resourceGroupName": {
+			"type": "string",
+			"defaultValue": "myResourceGroup"
+		},
+		"ml_workspace_Service_properties_typeProperties_servicePrincipalId": {
+			"type": "string",
+			"defaultValue": "38c02221-4a41-4ec8-b8da-a81f16c38e82"
+		},
+		"ml_workspace_Service_properties_typeProperties_tenant": {
+			"type": "string",
+			"defaultValue": "73b49191-8db3-45ab-87b3-b8f956ac123b"
 		}
 	},
 	"variables": {
@@ -58,6 +98,27 @@
 						"type": "SecureString",
 						"value": "[parameters('AzureFunction1_functionKey')]"
 					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureMLServiceLS')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureMLService",
+				"typeProperties": {
+					"subscriptionId": "[parameters('AzureMLServiceLS_properties_typeProperties_subscriptionId')]",
+					"resourceGroupName": "[parameters('AzureMLServiceLS_properties_typeProperties_resourceGroupName')]",
+					"mlWorkspaceName": "machine_learning_workspace",
+					"servicePrincipalId": "[parameters('AzureMLServiceLS_properties_typeProperties_servicePrincipalId')]",
+					"servicePrincipalKey": {
+						"type": "SecureString",
+						"value": "[parameters('AzureMLServiceLS_servicePrincipalKey')]"
+					},
+					"tenant": "[parameters('AzureMLServiceLS_properties_typeProperties_tenant')]"
 				}
 			},
 			"dependsOn": []
@@ -136,6 +197,27 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/ml_workspace_Service')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureMLService",
+				"typeProperties": {
+					"subscriptionId": "[parameters('ml_workspace_Service_properties_typeProperties_subscriptionId')]",
+					"resourceGroupName": "[parameters('ml_workspace_Service_properties_typeProperties_resourceGroupName')]",
+					"mlWorkspaceName": "ml_workspace",
+					"servicePrincipalId": "[parameters('ml_workspace_Service_properties_typeProperties_servicePrincipalId')]",
+					"servicePrincipalKey": {
+						"type": "SecureString",
+						"value": "[parameters('ml_workspace_Service_servicePrincipalKey')]"
+					},
+					"tenant": "[parameters('ml_workspace_Service_properties_typeProperties_tenant')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Binary_to_blob_pharma_ref_XLSX')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -198,6 +280,31 @@
 					"location": {
 						"type": "AzureBlobFSLocation",
 						"folderPath": "bronze/docph",
+						"fileSystem": "datalake"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/azure_ADLS_Gen2')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/dataflow_silver_parquet_dataset')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "azure_ADLS_Gen2",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "silver",
 						"fileSystem": "datalake"
 					},
 					"compressionCodec": "snappy"
@@ -283,6 +390,77 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/docph_bronze_parquet_dataset')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "azure_ADLS_Gen2",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "DB_V2.parquet",
+						"folderPath": "bronze/docph",
+						"fileSystem": "datalake"
+					},
+					"compressionCodec": "snappy"
+				},
+				"schema": [
+					{
+						"name": "account_yy_ss",
+						"type": "INT32"
+					},
+					{
+						"name": "province",
+						"type": "UTF8"
+					},
+					{
+						"name": "type",
+						"type": "UTF8"
+					},
+					{
+						"name": "hosp_serv_id",
+						"type": "UTF8"
+					},
+					{
+						"name": "reimbt_cat_id",
+						"type": "UTF8"
+					},
+					{
+						"name": "drug_code",
+						"type": "UTF8"
+					},
+					{
+						"name": "realization_date",
+						"type": "UTF8"
+					},
+					{
+						"name": "quantity",
+						"type": "UTF8"
+					},
+					{
+						"name": "amount_reimb",
+						"type": "FLOAT"
+					},
+					{
+						"name": "amount_not_reimb",
+						"type": "FLOAT"
+					},
+					{
+						"name": "year",
+						"type": "INT32"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/azure_ADLS_Gen2')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/google_xlsx_pharma_ref_binary')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -324,6 +502,315 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/googleDocs_URL')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/load_cleaned_spark_dataset_silver_Parquet')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "azure_ADLS_Gen2",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "silver/dataforbetterhealth_parquet",
+						"fileSystem": "datalake"
+					},
+					"compressionCodec": "none"
+				},
+				"schema": [
+					{
+						"name": "province",
+						"type": "UTF8"
+					},
+					{
+						"name": "hosp_serv_id",
+						"type": "UTF8"
+					},
+					{
+						"name": "reimbt_cat_id",
+						"type": "UTF8"
+					},
+					{
+						"name": "drug_code",
+						"type": "UTF8"
+					},
+					{
+						"name": "realization_date",
+						"type": "UTF8"
+					},
+					{
+						"name": "quantity",
+						"type": "INT32"
+					},
+					{
+						"name": "amount_reimb",
+						"type": "FLOAT"
+					},
+					{
+						"name": "amount_not_reimb",
+						"type": "FLOAT"
+					},
+					{
+						"name": "trim_pharma",
+						"type": "INT64"
+					},
+					{
+						"name": "produit_pharma",
+						"type": "UTF8"
+					},
+					{
+						"name": "type_drug_code",
+						"type": "UTF8"
+					},
+					{
+						"name": "famille_produit_pharma",
+						"type": "UTF8"
+					},
+					{
+						"name": "drug_name_aggregated",
+						"type": "UTF8"
+					},
+					{
+						"name": "conditionnement",
+						"type": "UTF8"
+					},
+					{
+						"name": "mode_administration",
+						"type": "UTF8"
+					},
+					{
+						"name": "date_debut_rembourse",
+						"type": "INT96"
+					},
+					{
+						"name": "statut_produit_pharma",
+						"type": "UTF8"
+					},
+					{
+						"name": "code_atc",
+						"type": "UTF8"
+					},
+					{
+						"name": "code_atc_5",
+						"type": "UTF8"
+					},
+					{
+						"name": "code_atc_4",
+						"type": "UTF8"
+					},
+					{
+						"name": "code_atc_3",
+						"type": "UTF8"
+					},
+					{
+						"name": "code_atc_1",
+						"type": "UTF8"
+					},
+					{
+						"name": "DDD",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "nombre_prises",
+						"type": "INT64"
+					},
+					{
+						"name": "orphan_flag",
+						"type": "INT64"
+					},
+					{
+						"name": "chapter_IV_bis_flag",
+						"type": "INT64"
+					},
+					{
+						"name": "link_same_tablet",
+						"type": "INT64"
+					},
+					{
+						"name": "dbegin",
+						"type": "INT96"
+					},
+					{
+						"name": "dend",
+						"type": "INT96"
+					},
+					{
+						"name": "reimbt_cat_desc_nl",
+						"type": "UTF8"
+					},
+					{
+						"name": "reimbt_crit_long",
+						"type": "UTF8"
+					},
+					{
+						"name": "reimbt_crit_short",
+						"type": "UTF8"
+					},
+					{
+						"name": "reimbt_cat_fixed_rate_yn",
+						"type": "INT64"
+					},
+					{
+						"name": "fee_cat",
+						"type": "UTF8"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/azure_ADLS_Gen2')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pharmaref_bronze_parquet_dataset')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "azure_ADLS_Gen2",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "Parquet",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "bronze/pharma_ref_parquet",
+						"fileSystem": "datalake"
+					},
+					"compressionCodec": "none"
+				},
+				"schema": [
+					{
+						"name": "trim_pharma",
+						"type": "INT64"
+					},
+					{
+						"name": "drug_code",
+						"type": "UTF8"
+					},
+					{
+						"name": "produit_pharma",
+						"type": "UTF8"
+					},
+					{
+						"name": "type_drug_code",
+						"type": "UTF8"
+					},
+					{
+						"name": "famille_produit_pharma",
+						"type": "UTF8"
+					},
+					{
+						"name": "drug_name_aggregated",
+						"type": "UTF8"
+					},
+					{
+						"name": "nom_produit_pharma",
+						"type": "UTF8"
+					},
+					{
+						"name": "conditionnement",
+						"type": "UTF8"
+					},
+					{
+						"name": "mode_administration",
+						"type": "UTF8"
+					},
+					{
+						"name": "nom_firme_pharma",
+						"type": "UTF8"
+					},
+					{
+						"name": "date_debut_rembourse",
+						"type": "INT96"
+					},
+					{
+						"name": "statut_produit_pharma",
+						"type": "UTF8"
+					},
+					{
+						"name": "code_atc",
+						"type": "UTF8"
+					},
+					{
+						"name": "code_atc_5",
+						"type": "UTF8"
+					},
+					{
+						"name": "code_atc_4",
+						"type": "UTF8"
+					},
+					{
+						"name": "code_atc_3",
+						"type": "UTF8"
+					},
+					{
+						"name": "code_atc_1",
+						"type": "UTF8"
+					},
+					{
+						"name": "DDD",
+						"type": "DOUBLE"
+					},
+					{
+						"name": "nombre_prises",
+						"type": "INT64"
+					},
+					{
+						"name": "orphan_flag",
+						"type": "INT64"
+					},
+					{
+						"name": "chapter_IV_bis_flag",
+						"type": "INT64"
+					},
+					{
+						"name": "link_same_tablet",
+						"type": "INT64"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/azure_ADLS_Gen2')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline_try_out_azureml')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "two_step_pipeline_test",
+						"type": "AzureMLExecutePipeline",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"mlPipelineId": "5a972f89-6d5b-4866-b958-561042ea62de"
+						},
+						"linkedServiceName": {
+							"referenceName": "ml_workspace_Service",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ml_workspace_Service')]"
 			]
 		},
 		{
@@ -658,7 +1145,7 @@
 						"type": "WebActivity",
 						"dependsOn": [
 							{
-								"activity": "ETL_xlsx_to_parquet",
+								"activity": "two_step_pipeline_test",
 								"dependencyConditions": [
 									"Succeeded"
 								]
@@ -686,6 +1173,33 @@
 								"EmailTo": "kevin.albert@atos.net"
 							}
 						}
+					},
+					{
+						"name": "two_step_pipeline_test",
+						"type": "AzureMLExecutePipeline",
+						"dependsOn": [
+							{
+								"activity": "ETL_xlsx_to_parquet",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"mlPipelineId": "5a972f89-6d5b-4866-b958-561042ea62de"
+						},
+						"linkedServiceName": {
+							"referenceName": "ml_workspace_Service",
+							"type": "LinkedServiceReference"
+						}
 					}
 				],
 				"annotations": []
@@ -698,7 +1212,8 @@
 				"[concat(variables('factoryId'), '/linkedServices/AzureFunction1')]",
 				"[concat(variables('factoryId'), '/linkedServices/azure_Databricks_Job')]",
 				"[concat(variables('factoryId'), '/datasets/google_xlsx_reimbcategory_binary')]",
-				"[concat(variables('factoryId'), '/datasets/Binary_to_blob_reimbcategory_xlsx')]"
+				"[concat(variables('factoryId'), '/datasets/Binary_to_blob_reimbcategory_xlsx')]",
+				"[concat(variables('factoryId'), '/linkedServices/ml_workspace_Service')]"
 			]
 		}
 	]

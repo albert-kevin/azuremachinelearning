@@ -1,10 +1,5 @@
 data/bronze
 data/silver
-data/gold
-data/platinum
-! data/platinum/diabetes.csv
-! data/platinum/diabetes.parquet
-! data/platinum/
 neo4j/
 .cache
 .ipython
@@ -12,5 +7,3 @@ neo4j/
 .config
 .vscode
 code/.ipynb_checkpoints
-code/notebooks/
-! code/notebooks/*.ipynb

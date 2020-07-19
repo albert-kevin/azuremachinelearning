@@ -1,4 +1,4 @@
-data/bronze
+# data/bronze
 data/silver
 neo4j/
 .cache

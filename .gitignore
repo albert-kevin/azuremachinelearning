@@ -1,6 +1,9 @@
 data/bronze
 data/silver
-neo4j/
+neo4j/conf
+neo4j/data
+neo4j/logs
+neo4j/import
 .cache
 .ipython
 .local

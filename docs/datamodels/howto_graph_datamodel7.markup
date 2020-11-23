@@ -1,0 +1,19 @@
+<ul class="graph-diagram-markup" data-internal-scale="1" data-external-scale="1">
+  <li class="node" data-node-id="0" data-x="-2717.7203369140625" data-y="-1109.7918701171875"></li>
+  <li class="node" data-node-id="1" data-x="2576.212724685669" data-y="1599.4104597568512"></li>
+  <li class="node" data-node-id="5" data-x="-903.6836242675781" data-y="268.209303855896">
+    <span class="caption">Wine</span><dl class="properties"><dt>id</dt><dd>int(127202)</dd><dt>name</dt><dd>str(Pali 2014 Radian Vineyard Pinot Noir (Sta. Rita Hills))</dd></dl></li>
+  <li class="node" data-node-id="15" data-x="-1375.7474365234375" data-y="-286.96060943603516">
+    <span class="caption">Points</span><dl class="properties"><dt>value</dt><dd>int(94)</dd></dl></li>
+  <li class="node" data-node-id="16" data-x="-1963.2548828125" data-y="-286.96060943603516">
+    <span class="caption">Taster</span><dl class="properties"><dt>name</dt><dd>str(Matt Kettmann)</dd></dl></li>
+  <li class="relationship" data-from="5" data-to="15">
+    <span class="type">HAS_POINTS</span>
+  </li>
+  <li class="relationship" data-from="16" data-to="15">
+    <span class="type">GAVE_POINTS</span>
+  </li>
+  <li class="relationship" data-from="5" data-to="16">
+    <span class="type">TASTED_BY</span>
+  </li>
+</ul>

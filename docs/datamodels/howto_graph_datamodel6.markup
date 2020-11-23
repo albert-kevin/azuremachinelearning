@@ -1,0 +1,21 @@
+<ul class="graph-diagram-markup" data-internal-scale="1" data-external-scale="1">
+  <li class="node" data-node-id="0" data-x="-2717.7203369140625" data-y="-1109.7918701171875"></li>
+  <li class="node" data-node-id="1" data-x="2576.212724685669" data-y="1599.4104597568512"></li>
+  <li class="node" data-node-id="11" data-x="-1189.25830078125" data-y="1161.4411010742188">
+    <span class="caption">Description</span><dl class="properties"><dt>value</dt><dd>str(From one of the most impressive vineyards located at the region...)</dd></dl></li>
+  <li class="node" data-node-id="12" data-x="-1796.5809326171875" data-y="590.0630187988281">
+    <span class="caption">Event</span><dl class="properties"><dt>value</dt><dd>str(NaN)</dd></dl></li>
+  <li class="node" data-node-id="13" data-x="-1796.5809326171875" data-y="883.7269287109375">
+    <span class="caption">Location</span><dl class="properties"><dt>value</dt><dd>str(vineyards)</dd></dl></li>
+  <li class="node" data-node-id="14" data-x="-1796.5809326171875" data-y="1161.4411010742188">
+    <span class="caption">Product</span><dl class="properties"><dt>value</dt><dd>str(thyme)</dd></dl></li>
+  <li class="relationship" data-from="12" data-to="11">
+    <span class="type">EVENT_IN</span>
+  </li>
+  <li class="relationship" data-from="13" data-to="11">
+    <span class="type">LOCATION_IN</span>
+  </li>
+  <li class="relationship" data-from="14" data-to="11">
+    <span class="type">PRODUCT_IN</span>
+  </li>
+</ul>

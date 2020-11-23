@@ -1,0 +1,16 @@
+<ul class="graph-diagram-markup" data-internal-scale="1" data-external-scale="1">
+  <li class="node" data-node-id="0" data-x="-2717.7203369140625" data-y="-1109.7918701171875"></li>
+  <li class="node" data-node-id="1" data-x="2576.212724685669" data-y="1599.4104597568512"></li>
+  <li class="node" data-node-id="5" data-x="-903.6836242675781" data-y="268.209303855896">
+    <span class="caption">Wine</span><dl class="properties"><dt>id</dt><dd>int(127202)</dd><dt>name</dt><dd>str(Pali 2014 Radian Vineyard Pinot Noir (Sta. Rita Hills))</dd></dl></li>
+  <li class="node" data-node-id="7" data-x="-292.4339609146118" data-y="-68.6445541381836">
+    <span class="caption">Year</span><dl class="properties"><dt>value</dt><dd>int(2014)</dd></dl></li>
+  <li class="node" data-node-id="8" data-x="-292.4339609146118" data-y="-390.1398620605469">
+    <span class="caption">WineGroup</span><dl class="properties"><dt>name</dt><dd>str(Pali Radian Vineyard Pinot Noir (Sta. Rita Hills))</dd></dl></li>
+  <li class="relationship" data-from="5" data-to="7">
+    <span class="type">FROM_YEAR</span>
+  </li>
+  <li class="relationship" data-from="5" data-to="8">
+    <span class="type">IN_WINE_GROUP</span>
+  </li>
+</ul>

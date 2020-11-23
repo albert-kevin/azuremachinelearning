@@ -1,0 +1,16 @@
+<ul class="graph-diagram-markup" data-internal-scale="1" data-external-scale="1">
+  <li class="node" data-node-id="0" data-x="-2717.7203369140625" data-y="-1109.7918701171875"></li>
+  <li class="node" data-node-id="1" data-x="2576.212724685669" data-y="1599.4104597568512"></li>
+  <li class="node" data-node-id="5" data-x="-903.6836242675781" data-y="268.209303855896">
+    <span class="caption">Wine</span><dl class="properties"><dt>id</dt><dd>int(127202)</dd><dt>name</dt><dd>str(Pali 2014 Radian Vineyard Pinot Noir (Sta. Rita Hills))</dd></dl></li>
+  <li class="node" data-node-id="9" data-x="-292.4339609146118" data-y="1101.9146118164062">
+    <span class="caption">Variety</span><dl class="properties"><dt>name</dt><dd>str(Pinot Noir)</dd></dl></li>
+  <li class="node" data-node-id="10" data-x="540.8258209228516" data-y="1101.9146118164062">
+    <span class="caption">VarietyName</span><dl class="properties"><dt>name</dt><dd>str(pinot)</dd></dl></li>
+  <li class="relationship" data-from="5" data-to="9">
+    <span class="type">HAS_VARIETY</span>
+  </li>
+  <li class="relationship" data-from="10" data-to="9">
+    <span class="type">IS_COMPONENT_OF</span>
+  </li>
+</ul>

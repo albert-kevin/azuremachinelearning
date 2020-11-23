@@ -1,0 +1,16 @@
+<ul class="graph-diagram-markup" data-internal-scale="1" data-external-scale="1">
+  <li class="node" data-node-id="0" data-x="-893.4713745117188" data-y="-394.901611328125"></li>
+  <li class="node" data-node-id="1" data-x="1972.196123123169" data-y="833.2988874912262"></li>
+  <li class="node" data-node-id="2" data-x="-292.4339609146118" data-y="268.209303855896">
+    <span class="caption">Winery</span><dl class="properties"><dt>name</dt><dd>str(Pali)</dd></dl></li>
+  <li class="node" data-node-id="3" data-x="379.7810363769531" data-y="268.209303855896">
+    <span class="caption">Province</span><dl class="properties"><dt>name</dt><dd>str(California)</dd></dl></li>
+  <li class="node" data-node-id="4" data-x="1154.7347717285156" data-y="268.209303855896">
+    <span class="caption">Country</span><dl class="properties"><dt>name</dt><dd>str(US)</dd></dl></li>
+  <li class="relationship" data-from="2" data-to="3">
+    <span class="type">FROM_PROVENCE</span>
+  </li>
+  <li class="relationship" data-from="3" data-to="4">
+    <span class="type">PROVINCE_COUNTRY</span>
+  </li>
+</ul>

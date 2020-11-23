@@ -1,0 +1,84 @@
+<ul class="graph-diagram-markup" data-internal-scale="1" data-external-scale="1">
+  <li class="node" data-node-id="0" data-x="-2717.7203369140625" data-y="-1109.7918701171875"></li>
+  <li class="node" data-node-id="1" data-x="2576.212724685669" data-y="1599.4104597568512"></li>
+  <li class="node" data-node-id="2" data-x="-292.4339609146118" data-y="268.209303855896">
+    <span class="caption">Winery</span><dl class="properties"><dt>name</dt><dd>str(Pali)</dd></dl></li>
+  <li class="node" data-node-id="3" data-x="379.7810363769531" data-y="268.209303855896">
+    <span class="caption">Province</span><dl class="properties"><dt>name</dt><dd>str(California)</dd></dl></li>
+  <li class="node" data-node-id="4" data-x="1154.7347717285156" data-y="268.209303855896">
+    <span class="caption">Country</span><dl class="properties"><dt>name</dt><dd>str(US)</dd></dl></li>
+  <li class="node" data-node-id="5" data-x="-903.6836242675781" data-y="268.209303855896">
+    <span class="caption">Wine</span><dl class="properties"><dt>id</dt><dd>int(127202)</dd><dt>name</dt><dd>str(Pali 2014 Radian Vineyard Pinot Noir (Sta. Rita Hills))</dd></dl></li>
+  <li class="node" data-node-id="6" data-x="-292.4339609146118" data-y="721.0211791992188">
+    <span class="caption">Designation</span><dl class="properties"><dt>name</dt><dd>str(Radian Vineyard)</dd></dl></li>
+  <li class="node" data-node-id="7" data-x="-292.4339609146118" data-y="-68.6445541381836">
+    <span class="caption">Year</span><dl class="properties"><dt>value</dt><dd>int(2014)</dd></dl></li>
+  <li class="node" data-node-id="8" data-x="-292.4339609146118" data-y="-390.1398620605469">
+    <span class="caption">WineGroup</span><dl class="properties"><dt>name</dt><dd>str(Pali Radian Vineyard Pinot Noir (Sta. Rita Hills))</dd></dl></li>
+  <li class="node" data-node-id="9" data-x="-292.4339609146118" data-y="1101.9146118164062">
+    <span class="caption">Variety</span><dl class="properties"><dt>name</dt><dd>str(Pinot Noir)</dd></dl></li>
+  <li class="node" data-node-id="10" data-x="540.8258209228516" data-y="1101.9146118164062">
+    <span class="caption">VarietyName</span><dl class="properties"><dt>name</dt><dd>str(pinot)</dd></dl></li>
+  <li class="node" data-node-id="11" data-x="-1189.25830078125" data-y="1161.4411010742188">
+    <span class="caption">Description</span><dl class="properties"><dt>value</dt><dd>str(From one of the most impressive vineyards located at the region...)</dd></dl></li>
+  <li class="node" data-node-id="12" data-x="-1796.5809326171875" data-y="590.0630187988281">
+    <span class="caption">Event</span><dl class="properties"><dt>value</dt><dd>str(NaN)</dd></dl></li>
+  <li class="node" data-node-id="13" data-x="-1796.5809326171875" data-y="883.7269287109375">
+    <span class="caption">Location</span><dl class="properties"><dt>value</dt><dd>str(vineyards)</dd></dl></li>
+  <li class="node" data-node-id="14" data-x="-1796.5809326171875" data-y="1161.4411010742188">
+    <span class="caption">Product</span><dl class="properties"><dt>value</dt><dd>str(thyme)</dd></dl></li>
+  <li class="node" data-node-id="15" data-x="-1375.7474365234375" data-y="-286.96060943603516">
+    <span class="caption">Points</span><dl class="properties"><dt>value</dt><dd>int(94)</dd></dl></li>
+  <li class="node" data-node-id="16" data-x="-1963.2548828125" data-y="-286.96060943603516">
+    <span class="caption">Taster</span><dl class="properties"><dt>name</dt><dd>str(Matt Kettmann)</dd></dl></li>
+  <li class="node" data-node-id="17" data-x="-903.6836242675781" data-y="-390.1398620605469">
+    <span class="caption">Price</span><dl class="properties"><dt>value</dt><dd>int(58.0)</dd></dl></li>
+  <li class="relationship" data-from="2" data-to="3">
+    <span class="type">FROM_PROVENCE</span>
+  </li>
+  <li class="relationship" data-from="3" data-to="4">
+    <span class="type">PROVINCE_COUNTRY</span>
+  </li>
+  <li class="relationship" data-from="5" data-to="2">
+    <span class="type">FROM_WINERY</span>
+  </li>
+  <li class="relationship" data-from="5" data-to="6">
+    <span class="type">HAS_DESIGNATION</span>
+  </li>
+  <li class="relationship" data-from="5" data-to="7">
+    <span class="type">FROM_YEAR</span>
+  </li>
+  <li class="relationship" data-from="5" data-to="8">
+    <span class="type">IN_WINE_GROUP</span>
+  </li>
+  <li class="relationship" data-from="5" data-to="9">
+    <span class="type">HAS_VARIETY</span>
+  </li>
+  <li class="relationship" data-from="10" data-to="9">
+    <span class="type">IS_COMPONENT_OF</span>
+  </li>
+  <li class="relationship" data-from="5" data-to="11">
+    <span class="type">HAS_DESCRIPTION</span>
+  </li>
+  <li class="relationship" data-from="12" data-to="11">
+    <span class="type">EVENT_IN</span>
+  </li>
+  <li class="relationship" data-from="13" data-to="11">
+    <span class="type">LOCATION_IN</span>
+  </li>
+  <li class="relationship" data-from="14" data-to="11">
+    <span class="type">PRODUCT_IN</span>
+  </li>
+  <li class="relationship" data-from="5" data-to="15">
+    <span class="type">HAS_POINTS</span>
+  </li>
+  <li class="relationship" data-from="16" data-to="15">
+    <span class="type">GAVE_POINTS</span>
+  </li>
+  <li class="relationship" data-from="5" data-to="17">
+    <span class="type">HAS_PRICE</span>
+  </li>
+  <li class="relationship" data-from="5" data-to="16">
+    <span class="type">TASTED_BY</span>
+  </li>
+</ul>

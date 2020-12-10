@@ -17,3 +17,9 @@ keys.py
 *.parquet
 Untitled.ipynb
 code/scripts/fastapi/main.py
+neo4j/plugins/neo4j-bloom-1.4.1-assets.zip
+neo4j/plugins/graph-data-science.jar
+neo4j/plugins/bloom-plugin-4.x-1.4.1.jar
+neo4j/plugins/bloom-plugin.license
+neo4j/plugins/apoc.jar
+neo4j/plugins/apoc-nlp-dependencies-4.2.0.0.jar

@@ -1,4 +1,4 @@
-pclass,survived,fullname,sex,age,nrSiblings,nrParents,ticketId,ticketPrice,cabin,port,passengerId,familySize,familyName,deck
+pclass,survived,fullname,sex,age,nrSiblings,nrParents,ticketId,ticketPrice,cabinId,port,passengerId,familySize,familyName,deck
 1.0,1.0,"Allen, Miss. Elisabeth Walton",female,29.0,0.0,0.0,24160,211.3375,B5,Southampton,0,1.0,Allen,B
 1.0,1.0,"Allison, Master. Hudson Trevor",male,0.9167,1.0,2.0,113781,151.55,C22 C26,Southampton,1,4.0,Allison,C
 1.0,0.0,"Allison, Miss. Helen Loraine",female,2.0,1.0,2.0,113781,151.55,C22 C26,Southampton,2,4.0,Allison,C
